@@ -36,7 +36,7 @@ const GameTile = ({ tile, isActive, delay = 0 }: { tile: Tile; isActive: boolean
     }
   };
 
-  const activeStyle = isActive ? 'ring-2 ring-purple-400 scale-110' : '';
+  const activeStyle = isActive ? 'ring-2 ring-sky-400 scale-110' : '';
   const animationDelay = tile.status !== 'empty' ? { animationDelay: `${delay * 0.1}s` } : {};
 
   return (
@@ -271,7 +271,7 @@ export default function Game() {
       <div className="game-particles fixed inset-0 pointer-events-none z-10"></div>
       
       {/* Background gradient */}
-      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
+      <div className="fixed inset-0 bg-gradient-to-br from-sky-900/20 via-black to-blue-900/20"></div>
       
       <Navigation />
       <Confetti active={showConfetti} onComplete={() => setShowConfetti(false)} />
