@@ -56,10 +56,10 @@ export default function Navigation() {
                       key={item.path}
                       to={item.path}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 hover:scale-105 ${
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:scale-105 ${
                         isActive(item.path)
-                          ? "bg-wordle-green text-white neon-glow cyber-border"
-                          : "text-muted-foreground hover:bg-accent hover:text-foreground hover:neon-glow"
+                          ? "bg-wordle-green text-white"
+                          : "text-muted-foreground hover:bg-accent hover:text-foreground"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
@@ -83,11 +83,11 @@ export default function Navigation() {
           </SheetContent>
         </Sheet>
         
-        <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-all duration-300">
+        <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-all duration-200">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
             alt="WordleMates"
-            className="w-8 h-8 animate-pulse-glow"
+            className="w-8 h-8"
           />
           <h1 className="text-xl font-bold gradient-text">WordleMates</h1>
         </Link>
@@ -99,10 +99,10 @@ export default function Navigation() {
           <Link
             key={item.path}
             to={item.path}
-            className={`text-sm font-medium transition-all duration-300 hover:scale-110 px-3 py-2 rounded ${
+            className={`text-sm font-medium transition-all duration-200 hover:scale-105 px-3 py-2 rounded ${
               isActive(item.path)
-                ? "text-wordle-green neon-text"
-                : "text-muted-foreground hover:text-foreground hover:neon-glow"
+                ? "text-wordle-green"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
             {item.label}
@@ -114,21 +114,21 @@ export default function Navigation() {
       <div className="relative z-10">
         <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
           <DialogTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent neon-glow transition-all duration-300 hover:scale-110">
+            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent transition-all duration-200 hover:scale-105">
               <User className="w-6 h-6" />
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-md bg-background border-border holographic">
+          <DialogContent className="sm:max-w-md bg-background border-border">
             <DialogHeader>
-              <DialogTitle className="text-foreground gradient-text">Profile</DialogTitle>
+              <DialogTitle className="text-foreground">Profile</DialogTitle>
             </DialogHeader>
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 holographic rounded-lg cyber-border">
-              <div className="w-12 h-12 bg-wordle-green rounded-full flex items-center justify-center text-white font-bold text-lg neon-glow animate-pulse-glow">
+            <div className="flex items-center gap-4 p-4 bg-card rounded-lg border">
+              <div className="w-12 h-12 bg-wordle-green rounded-full flex items-center justify-center text-white font-bold text-lg">
                 P
               </div>
               <div>
-                <div className="font-medium text-foreground neon-text">Player123</div>
+                <div className="font-medium text-foreground">Player123</div>
                 <div className="text-sm text-muted-foreground">player@example.com</div>
               </div>
             </div>
@@ -136,28 +136,28 @@ export default function Navigation() {
             <div className="grid gap-2">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Games Played:</span>
-                <span className="text-foreground neon-text">24</span>
+                <span className="text-foreground">24</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Win Rate:</span>
-                <span className="text-wordle-green neon-text">87%</span>
+                <span className="text-wordle-green">87%</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Current Streak:</span>
-                <span className="text-wordle-green neon-text">5</span>
+                <span className="text-wordle-green">5</span>
               </div>
             </div>
             
             <div className="flex gap-2">
               <Link to="/settings" className="flex-1" onClick={() => setIsProfileOpen(false)}>
-                <Button variant="outline" className="w-full border-border text-foreground hover:neon-glow transition-all duration-300">
+                <Button variant="outline" className="w-full border-border text-foreground transition-all duration-200">
                   Settings
                 </Button>
               </Link>
               <Button
                 variant="destructive"
                 onClick={handleLogout}
-                className="flex-1 bg-red-600 hover:bg-red-700 hover:neon-glow transition-all duration-300"
+                className="flex-1 bg-red-600 hover:bg-red-700 transition-all duration-200"
               >
                 Log Out
               </Button>
