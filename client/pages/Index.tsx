@@ -43,6 +43,37 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* Navigation Header - Only show when authenticated */}
+      {isAuthenticated && (
+        <header className="flex items-center justify-between p-4 border-b border-gray-700">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
+              <Menu className="w-6 h-6" />
+            </Button>
+            <h1 className="text-xl font-bold gradient-text">🧩 WordleMates</h1>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-6">
+            <Link to="/game" className="text-gray-300 hover:text-white transition-colors">
+              Play
+            </Link>
+            <Link to="/stats" className="text-gray-300 hover:text-white transition-colors">
+              Stats
+            </Link>
+            <Link to="/settings" className="text-gray-300 hover:text-white transition-colors">
+              Settings
+            </Link>
+            <Link to="/help" className="text-gray-300 hover:text-white transition-colors">
+              Help
+            </Link>
+          </nav>
+
+          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
+            <User className="w-6 h-6" />
+          </Button>
+        </header>
+      )}
+
       {/* Hero Section */}
       <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
         {/* Animated background elements */}
