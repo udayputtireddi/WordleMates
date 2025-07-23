@@ -57,6 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        wordle: {
+          green: "hsl(var(--wordle-green))",
+          yellow: "hsl(var(--wordle-yellow))",
+          gray: "hsl(var(--wordle-gray))",
+          tile: "hsl(var(--wordle-tile))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
