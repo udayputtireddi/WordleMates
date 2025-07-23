@@ -13,6 +13,7 @@ export default function Navigation() {
   const menuItems = [
     { path: "/game", label: "Play", icon: GameController2 },
     { path: "/stats", label: "Statistics", icon: TrendingUp },
+    { path: "/leaderboard", label: "Leaderboard", icon: Trophy },
     { path: "/settings", label: "Settings", icon: Settings },
     { path: "/help", label: "Help", icon: HelpCircle },
   ];
