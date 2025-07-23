@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Menu, User, Gamepad2, TrendingUp, Settings, HelpCircle, Trophy, LogOut } from "lucide-react";
+import { Menu, User, Gamepad2, TrendingUp, Settings, HelpCircle, Trophy, LogOut, Home } from "lucide-react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
