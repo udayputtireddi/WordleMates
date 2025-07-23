@@ -114,59 +114,61 @@ export default function Navigation() {
       </nav>
 
       {/* Right side - Profile */}
-      <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
-        <DialogTrigger asChild>
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <User className="w-6 h-6" />
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
-          <DialogHeader>
-            <DialogTitle className="text-white">Profile</DialogTitle>
-          </DialogHeader>
+      <div className="relative z-10">
+        <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
+          <DialogTrigger asChild>
+            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent neon-glow transition-all duration-300 hover:scale-110">
+              <User className="w-6 h-6" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md bg-background border-border holographic">
+            <DialogHeader>
+              <DialogTitle className="text-foreground gradient-text">Profile</DialogTitle>
+            </DialogHeader>
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 bg-gray-700/50 rounded-lg">
-              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div className="flex items-center gap-4 p-4 holographic rounded-lg cyber-border">
+              <div className="w-12 h-12 bg-wordle-green rounded-full flex items-center justify-center text-white font-bold text-lg neon-glow animate-pulse-glow">
                 P
               </div>
               <div>
-                <div className="font-medium text-white">Player123</div>
-                <div className="text-sm text-gray-400">player@example.com</div>
+                <div className="font-medium text-foreground neon-text">Player123</div>
+                <div className="text-sm text-muted-foreground">player@example.com</div>
               </div>
             </div>
             
             <div className="grid gap-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Games Played:</span>
-                <span className="text-white">24</span>
+                <span className="text-muted-foreground">Games Played:</span>
+                <span className="text-foreground neon-text">24</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Win Rate:</span>
-                <span className="text-green-400">87%</span>
+                <span className="text-muted-foreground">Win Rate:</span>
+                <span className="text-wordle-green neon-text">87%</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Current Streak:</span>
-                <span className="text-green-400">5</span>
+                <span className="text-muted-foreground">Current Streak:</span>
+                <span className="text-wordle-green neon-text">5</span>
               </div>
             </div>
             
             <div className="flex gap-2">
               <Link to="/settings" className="flex-1" onClick={() => setIsProfileOpen(false)}>
-                <Button variant="outline" className="w-full border-gray-600 text-gray-300">
+                <Button variant="outline" className="w-full border-border text-foreground hover:neon-glow transition-all duration-300">
                   Settings
                 </Button>
               </Link>
-              <Button 
-                variant="destructive" 
+              <Button
+                variant="destructive"
                 onClick={handleLogout}
-                className="flex-1 bg-red-600 hover:bg-red-700"
+                className="flex-1 bg-red-600 hover:bg-red-700 hover:neon-glow transition-all duration-300"
               >
                 Log Out
               </Button>
             </div>
           </div>
         </DialogContent>
-      </Dialog>
+        </Dialog>
+      </div>
     </header>
   );
 }
