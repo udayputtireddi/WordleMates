@@ -28,25 +28,22 @@ export default function Navigation() {
   };
 
   return (
-    <header className="flex items-center justify-between p-4 border-b border-border bg-background backdrop-blur-sm relative overflow-hidden">
-      {/* Cyber grid background */}
-      <div className="absolute inset-0 cyber-grid opacity-20"></div>
-
+    <header className="flex items-center justify-between p-4 border-b border-border bg-background">
       {/* Left side - Menu and Logo */}
-      <div className="flex items-center gap-4 relative z-10">
+      <div className="flex items-center gap-4">
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent neon-glow transition-all duration-300 hover:scale-110">
+            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent transition-all duration-200 hover:scale-105">
               <Menu className="w-6 h-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-background border-border text-foreground w-80 holographic">
+          <SheetContent side="left" className="bg-background border-border text-foreground w-80">
             <div className="flex flex-col h-full">
               <div className="flex items-center gap-3 mb-8 pt-4">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
                   alt="WordleMates"
-                  className="w-8 h-8 animate-pulse-glow"
+                  className="w-8 h-8"
                 />
                 <h2 className="text-xl font-bold gradient-text">WordleMates</h2>
               </div>
