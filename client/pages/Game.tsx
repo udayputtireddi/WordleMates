@@ -78,6 +78,7 @@ export default function Game() {
   const [currentCol, setCurrentCol] = useState(0);
   const [gameStatus, setGameStatus] = useState<'playing' | 'won' | 'lost'>('playing');
   const [keyboardStatus, setKeyboardStatus] = useState<Record<string, TileStatus>>({});
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const qwertyLayout = [
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
