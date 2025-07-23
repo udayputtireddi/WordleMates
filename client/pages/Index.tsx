@@ -227,7 +227,7 @@ export default function Index() {
               <Link to="/settings">
                 <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
                   <CardContent className="p-8 text-center">
-                    <Settings className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
+                    <SettingsIcon className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
                     <div className="text-white font-bold text-lg">Settings</div>
                   </CardContent>
                 </Card>
