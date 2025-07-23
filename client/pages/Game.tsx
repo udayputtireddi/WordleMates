@@ -155,7 +155,9 @@ export default function Game() {
     // Check game status
     if (currentWord === TARGET_WORD) {
       setGameStatus('won');
-      setShowConfetti(true);
+      if (settings.confettiMode) {
+        setShowConfetti(true);
+      }
     } else if (currentRow === MAX_ATTEMPTS - 1) {
       setGameStatus('lost');
     } else {
