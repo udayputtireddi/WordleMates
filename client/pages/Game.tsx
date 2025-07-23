@@ -135,12 +135,31 @@ export default function Game() {
   };
 
   const submitWord = () => {
-    if (currentCol !== WORD_LENGTH) return;
+    if (currentCol !== WORD_LENGTH) {
+      toast({
+        title: "Incomplete word",
+        description: "Please enter a 5-letter word",
+        variant: "destructive",
+      });
+      return;
+    }
 
     const currentWord = grid[currentRow].map(tile => tile.letter).join('');
-    
+
     if (!VALID_WORDS.includes(currentWord)) {
-      // In a real app, you'd show an error message
+      toast({
+        title: "Invalid word",
+        description: `"${currentWord}" is not a valid word`,
+        variant: "destructive",
+      });
+      // Add shake animation to the current row
+      const currentRowElement = document.querySelector(`[data-row="${currentRow}"]`);
+      if (currentRowElement) {
+        currentRowElement.classList.add('animate-shake');
+        setTimeout(() => {
+          currentRowElement.classList.remove('animate-shake');
+        }, 500);
+      }
       return;
     }
 
