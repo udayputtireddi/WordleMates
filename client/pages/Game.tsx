@@ -247,11 +247,11 @@ export default function Game() {
         {/* Game Grid */}
         <div className="grid gap-2 mb-8">
           {grid.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex gap-2">
+            <div key={rowIndex} className="flex gap-2" data-row={rowIndex}>
               {row.map((tile, colIndex) => (
-                <GameTile 
-                  key={colIndex} 
-                  tile={tile} 
+                <GameTile
+                  key={colIndex}
+                  tile={tile}
                   isActive={rowIndex === currentRow && colIndex === currentCol}
                 />
               ))}
