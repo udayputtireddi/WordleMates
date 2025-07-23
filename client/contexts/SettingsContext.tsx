@@ -8,7 +8,10 @@ interface GameSettings {
 
 interface SettingsContextType {
   settings: GameSettings;
-  updateSetting: <K extends keyof GameSettings>(key: K, value: GameSettings[K]) => void;
+  updateSetting: <K extends keyof GameSettings>(
+    key: K,
+    value: GameSettings[K],
+  ) => void;
 }
 
 const defaultSettings: GameSettings = {
@@ -17,25 +20,32 @@ const defaultSettings: GameSettings = {
   soundEffects: true,
 };
 
-const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
+const SettingsContext = createContext<SettingsContextType | undefined>(
+  undefined,
+);
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<GameSettings>(() => {
     // Try to load settings from localStorage
     try {
-      const saved = localStorage.getItem('wordlemates-settings');
-      return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+      const saved = localStorage.getItem("wordlemates-settings");
+      return saved
+        ? { ...defaultSettings, ...JSON.parse(saved) }
+        : defaultSettings;
     } catch {
       return defaultSettings;
     }
   });
 
-  const updateSetting = <K extends keyof GameSettings>(key: K, value: GameSettings[K]) => {
+  const updateSetting = <K extends keyof GameSettings>(
+    key: K,
+    value: GameSettings[K],
+  ) => {
     const newSettings = { ...settings, [key]: value };
     setSettings(newSettings);
     // Save to localStorage
     try {
-      localStorage.setItem('wordlemates-settings', JSON.stringify(newSettings));
+      localStorage.setItem("wordlemates-settings", JSON.stringify(newSettings));
     } catch {
       // Handle localStorage errors silently
     }
@@ -51,7 +61,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 export function useSettings() {
   const context = useContext(SettingsContext);
   if (!context) {
-    throw new Error('useSettings must be used within a SettingsProvider');
+    throw new Error("useSettings must be used within a SettingsProvider");
   }
   return context;
 }

@@ -1,11 +1,29 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Gamepad2, Users, TrendingUp, Settings as SettingsIcon, HelpCircle, Menu, User, Trophy, Sparkles, Zap, Crown } from "lucide-react";
+import {
+  Gamepad2,
+  Users,
+  TrendingUp,
+  Settings as SettingsIcon,
+  HelpCircle,
+  Menu,
+  User,
+  Trophy,
+  Sparkles,
+  Zap,
+  Crown,
+} from "lucide-react";
 
 export default function Index() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,15 +45,15 @@ export default function Index() {
   // Create floating particles
   useEffect(() => {
     const createParticle = () => {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 20 + 's';
-      
-      const particles = document.querySelector('.particles');
+      const particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.animationDelay = Math.random() * 20 + "s";
+
+      const particles = document.querySelector(".particles");
       if (particles) {
         particles.appendChild(particle);
-        
+
         setTimeout(() => {
           particle.remove();
         }, 30000);
@@ -43,7 +61,7 @@ export default function Index() {
     };
 
     const interval = setInterval(createParticle, 300);
-    
+
     // Create initial particles
     for (let i = 0; i < 15; i++) {
       setTimeout(createParticle, i * 200);
@@ -52,22 +70,30 @@ export default function Index() {
     return () => clearInterval(interval);
   }, []);
 
-  const GameTile = ({ letter, status, delay = 0 }: { letter: string; status: 'correct' | 'present' | 'absent'; delay?: number }) => {
+  const GameTile = ({
+    letter,
+    status,
+    delay = 0,
+  }: {
+    letter: string;
+    status: "correct" | "present" | "absent";
+    delay?: number;
+  }) => {
     const getStatusStyle = () => {
       switch (status) {
-        case 'correct': 
-          return 'bg-gradient-to-br from-emerald-400 to-green-600 border-emerald-300 text-white shadow-lg shadow-emerald-500/30';
-        case 'present': 
-          return 'bg-gradient-to-br from-amber-400 to-yellow-600 border-amber-300 text-white shadow-lg shadow-amber-500/30';
-        case 'absent': 
-          return 'bg-gradient-to-br from-gray-600 to-gray-800 border-gray-500 text-white shadow-lg shadow-gray-500/30';
-        default: 
-          return 'glass border-white/20 text-white shadow-lg';
+        case "correct":
+          return "bg-gradient-to-br from-emerald-400 to-green-600 border-emerald-300 text-white shadow-lg shadow-emerald-500/30";
+        case "present":
+          return "bg-gradient-to-br from-amber-400 to-yellow-600 border-amber-300 text-white shadow-lg shadow-amber-500/30";
+        case "absent":
+          return "bg-gradient-to-br from-gray-600 to-gray-800 border-gray-500 text-white shadow-lg shadow-gray-500/30";
+        default:
+          return "glass border-white/20 text-white shadow-lg";
       }
     };
 
     return (
-      <div 
+      <div
         className={`w-14 h-14 border-2 flex items-center justify-center font-bold text-xl tile-3d ${getStatusStyle()} animate-stagger-${delay + 1}`}
         style={{ animationDelay: `${delay * 0.1}s` }}
       >
@@ -77,11 +103,16 @@ export default function Index() {
   };
 
   const FeatureCard = ({ icon: Icon, title, description, delay = 0 }) => (
-    <Card className={`glass-card hover:scale-105 transition-all duration-700 animate-stagger-${delay + 1} group`}>
+    <Card
+      className={`glass-card hover:scale-105 transition-all duration-700 animate-stagger-${delay + 1} group`}
+    >
       <CardContent className="p-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 holographic opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="relative z-10">
-          <Icon className="w-16 h-16 text-sky-400 mx-auto mb-6 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
+          <Icon
+            className="w-16 h-16 text-sky-400 mx-auto mb-6 animate-float"
+            style={{ animationDelay: `${delay * 0.2}s` }}
+          />
           <h3 className="text-2xl font-bold mb-4 text-white">{title}</h3>
           <p className="text-gray-300 leading-relaxed">{description}</p>
         </div>
@@ -98,7 +129,9 @@ export default function Index() {
       {isAuthenticated && <Navigation />}
 
       {/* Hero Section */}
-      <div className={`${isAuthenticated ? 'pt-24' : ''} min-h-screen flex flex-col items-center justify-center px-6 relative`}>
+      <div
+        className={`${isAuthenticated ? "pt-24" : ""} min-h-screen flex flex-col items-center justify-center px-6 relative`}
+      >
         <div className="text-center relative z-10">
           {/* Floating logo with premium effects */}
           <div className="mb-12 relative">
@@ -116,7 +149,7 @@ export default function Index() {
                 WordleMates
               </h1>
             </div>
-            
+
             {/* Premium word display */}
             <div className="flex justify-center gap-2 mb-8">
               <GameTile letter="W" status="correct" delay={0} />
@@ -128,15 +161,22 @@ export default function Index() {
           </div>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Experience the <span className="gradient-text font-semibold">ultimate word game</span> with friends.
-            Challenge, compete, and conquer with stunning visuals and smooth gameplay.
+            Experience the{" "}
+            <span className="gradient-text font-semibold">
+              ultimate word game
+            </span>{" "}
+            with friends. Challenge, compete, and conquer with stunning visuals
+            and smooth gameplay.
           </p>
 
           {!isAuthenticated ? (
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="px-12 py-8 text-xl glass-button hover:scale-110 transition-all duration-500 relative group overflow-hidden">
+                  <Button
+                    size="lg"
+                    className="px-12 py-8 text-xl glass-button hover:scale-110 transition-all duration-500 relative group overflow-hidden"
+                  >
                     <span className="relative z-10 flex items-center gap-3">
                       <Sparkles className="w-6 h-6" />
                       Enter the Game
@@ -146,18 +186,37 @@ export default function Index() {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md glass border-white/20">
                   <DialogHeader>
-                    <DialogTitle className="text-white text-2xl gradient-text">Welcome Back!</DialogTitle>
+                    <DialogTitle className="text-white text-2xl gradient-text">
+                      Welcome Back!
+                    </DialogTitle>
                   </DialogHeader>
                   <form onSubmit={handleLogin} className="space-y-6">
                     <div>
-                      <Label htmlFor="email" className="text-white text-lg">Email</Label>
-                      <Input id="email" type="email" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
+                      <Label htmlFor="email" className="text-white text-lg">
+                        Email
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        required
+                        className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3"
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="password" className="text-white text-lg">Password</Label>
-                      <Input id="password" type="password" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
+                      <Label htmlFor="password" className="text-white text-lg">
+                        Password
+                      </Label>
+                      <Input
+                        id="password"
+                        type="password"
+                        required
+                        className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3"
+                      />
                     </div>
-                    <Button type="submit" className="w-full glass-button py-4 text-lg">
+                    <Button
+                      type="submit"
+                      className="w-full glass-button py-4 text-lg"
+                    >
                       Login
                     </Button>
                   </form>
@@ -166,29 +225,64 @@ export default function Index() {
 
               <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="px-12 py-8 text-xl glass border-white/30 hover:bg-white/10 transition-all duration-500 hover:scale-110">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="px-12 py-8 text-xl glass border-white/30 hover:bg-white/10 transition-all duration-500 hover:scale-110"
+                  >
                     <Crown className="w-6 h-6 mr-3" />
                     Join Premium
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md glass border-white/20">
                   <DialogHeader>
-                    <DialogTitle className="text-white text-2xl gradient-text">Join WordleMates!</DialogTitle>
+                    <DialogTitle className="text-white text-2xl gradient-text">
+                      Join WordleMates!
+                    </DialogTitle>
                   </DialogHeader>
                   <form onSubmit={handleSignup} className="space-y-6">
                     <div>
-                      <Label htmlFor="username" className="text-white text-lg">Username</Label>
-                      <Input id="username" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
+                      <Label htmlFor="username" className="text-white text-lg">
+                        Username
+                      </Label>
+                      <Input
+                        id="username"
+                        required
+                        className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3"
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="signup-email" className="text-white text-lg">Email</Label>
-                      <Input id="signup-email" type="email" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
+                      <Label
+                        htmlFor="signup-email"
+                        className="text-white text-lg"
+                      >
+                        Email
+                      </Label>
+                      <Input
+                        id="signup-email"
+                        type="email"
+                        required
+                        className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3"
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="signup-password" className="text-white text-lg">Password</Label>
-                      <Input id="signup-password" type="password" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
+                      <Label
+                        htmlFor="signup-password"
+                        className="text-white text-lg"
+                      >
+                        Password
+                      </Label>
+                      <Input
+                        id="signup-password"
+                        type="password"
+                        required
+                        className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3"
+                      />
                     </div>
-                    <Button type="submit" className="w-full glass-button py-4 text-lg">
+                    <Button
+                      type="submit"
+                      className="w-full glass-button py-4 text-lg"
+                    >
                       Create Account
                     </Button>
                   </form>
@@ -219,7 +313,9 @@ export default function Index() {
                 <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
                   <CardContent className="p-8 text-center">
                     <Trophy className="w-12 h-12 text-yellow-400 mx-auto mb-4 animate-float" />
-                    <div className="text-white font-bold text-lg">Leaderboard</div>
+                    <div className="text-white font-bold text-lg">
+                      Leaderboard
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
@@ -261,7 +357,8 @@ export default function Index() {
               Premium Features
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Discover what makes WordleMates the most advanced word game experience
+              Discover what makes WordleMates the most advanced word game
+              experience
             </p>
           </div>
 
@@ -301,8 +398,8 @@ export default function Index() {
             See It In Action
           </h2>
           <p className="text-xl text-gray-300 mb-16 max-w-3xl mx-auto">
-            Six chances to find the perfect word. Green tiles mark perfect matches, 
-            yellow shows correct letters in wrong positions.
+            Six chances to find the perfect word. Green tiles mark perfect
+            matches, yellow shows correct letters in wrong positions.
           </p>
 
           <div className="glass-card p-12 rounded-3xl mb-12">
@@ -332,8 +429,8 @@ export default function Index() {
           </div>
 
           {!isAuthenticated && (
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="px-12 py-8 text-xl glass-button hover:scale-110 transition-all duration-500"
               onClick={() => setIsLoginOpen(true)}
             >
@@ -355,13 +452,19 @@ export default function Index() {
             />
             <h3 className="text-3xl font-bold gradient-text">WordleMates</h3>
           </div>
-          <p className="text-gray-400 mb-6 text-lg">The ultimate premium word game experience</p>
+          <p className="text-gray-400 mb-6 text-lg">
+            The ultimate premium word game experience
+          </p>
           <div className="flex justify-center gap-8 text-gray-500">
             <span>© 2024 WordleMates</span>
             <span>•</span>
-            <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
+            <span className="hover:text-white transition-colors cursor-pointer">
+              Privacy Policy
+            </span>
             <span>•</span>
-            <span className="hover:text-white transition-colors cursor-pointer">Terms of Service</span>
+            <span className="hover:text-white transition-colors cursor-pointer">
+              Terms of Service
+            </span>
           </div>
         </div>
       </footer>

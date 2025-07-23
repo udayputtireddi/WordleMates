@@ -2,8 +2,26 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Menu, User, Gamepad2, TrendingUp, Settings as SettingsIcon, HelpCircle, Trophy, LogOut, Home, Crown, Zap } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Menu,
+  User,
+  Gamepad2,
+  TrendingUp,
+  Settings as SettingsIcon,
+  HelpCircle,
+  Trophy,
+  LogOut,
+  Home,
+  Crown,
+  Zap,
+} from "lucide-react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,11 +51,18 @@ export default function Navigation() {
         <div className="flex items-center gap-4">
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:bg-white/10"
+              >
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-black/90 backdrop-blur-lg border-white/20 text-white w-80">
+            <SheetContent
+              side="left"
+              className="bg-black/90 backdrop-blur-lg border-white/20 text-white w-80"
+            >
               <div className="flex flex-col h-full">
                 <div className="flex items-center gap-3 mb-8 pt-4">
                   <img
@@ -47,7 +72,7 @@ export default function Navigation() {
                   />
                   <h2 className="text-2xl font-bold text-white">WordleMates</h2>
                 </div>
-                
+
                 <nav className="flex-1 space-y-3">
                   {menuItems.map((item, index) => {
                     const Icon = item.icon;
@@ -62,13 +87,15 @@ export default function Navigation() {
                             : "text-gray-300 hover:bg-white/10 hover:text-white"
                         }`}
                       >
-                        <Icon className={`w-6 h-6 transition-all duration-300 ${isActive(item.path) ? 'text-sky-400' : 'hover:text-sky-400'}`} />
+                        <Icon
+                          className={`w-6 h-6 transition-all duration-300 ${isActive(item.path) ? "text-sky-400" : "hover:text-sky-400"}`}
+                        />
                         <span className="font-medium">{item.label}</span>
                       </Link>
                     );
                   })}
                 </nav>
-                
+
                 <div className="border-t border-white/20 pt-6 mt-6">
                   <Button
                     variant="ghost"
@@ -82,8 +109,11 @@ export default function Navigation() {
               </div>
             </SheetContent>
           </Sheet>
-          
-          <Link to="/" className="flex items-center gap-3 hover:scale-105 transition-all duration-300">
+
+          <Link
+            to="/"
+            className="flex items-center gap-3 hover:scale-105 transition-all duration-300"
+          >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
               alt="WordleMates"
@@ -106,9 +136,11 @@ export default function Navigation() {
               }`}
             >
               {item.label}
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-sky-400 to-blue-400 transition-all duration-300 ${
-                isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-sky-400 to-blue-400 transition-all duration-300 ${
+                  isActive(item.path) ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
             </Link>
           ))}
         </nav>
@@ -117,7 +149,11 @@ export default function Navigation() {
         <div className="relative z-10">
           <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
             <DialogTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:bg-white/10"
+              >
                 <User className="w-6 h-6" />
               </Button>
             </DialogTrigger>
@@ -137,15 +173,19 @@ export default function Navigation() {
                     </div>
                   </div>
                   <div>
-                    <div className="font-bold text-white text-lg">Player123</div>
+                    <div className="font-bold text-white text-lg">
+                      Player123
+                    </div>
                     <div className="text-gray-400">player@example.com</div>
                     <div className="flex items-center gap-2 mt-1">
                       <Zap className="w-4 h-4 text-yellow-400" />
-                      <span className="text-yellow-400 text-sm font-medium">Premium Member</span>
+                      <span className="text-yellow-400 text-sm font-medium">
+                        Premium Member
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="grid gap-4">
                   <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
@@ -156,20 +196,31 @@ export default function Navigation() {
                   <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400">Win Rate:</span>
-                      <span className="text-emerald-400 font-bold text-lg">87%</span>
+                      <span className="text-emerald-400 font-bold text-lg">
+                        87%
+                      </span>
                     </div>
                   </div>
                   <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400">Current Streak:</span>
-                      <span className="text-sky-400 font-bold text-lg">5 🔥</span>
+                      <span className="text-sky-400 font-bold text-lg">
+                        5 🔥
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-3">
-                  <Link to="/settings" className="flex-1" onClick={() => setIsProfileOpen(false)}>
-                    <Button variant="ghost" className="w-full bg-white/10 hover:bg-white/20 transition-all duration-300">
+                  <Link
+                    to="/settings"
+                    className="flex-1"
+                    onClick={() => setIsProfileOpen(false)}
+                  >
+                    <Button
+                      variant="ghost"
+                      className="w-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+                    >
                       Settings
                     </Button>
                   </Link>

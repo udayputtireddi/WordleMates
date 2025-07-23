@@ -3,7 +3,18 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { Settings as SettingsIcon, Volume2, Zap, RotateCcw, LogOut, User, Crown, Shield, Palette, Bell } from "lucide-react";
+import {
+  Settings as SettingsIcon,
+  Volume2,
+  Zap,
+  RotateCcw,
+  LogOut,
+  User,
+  Crown,
+  Shield,
+  Palette,
+  Bell,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useSettings } from "@/contexts/SettingsContext";
 
@@ -11,7 +22,11 @@ export default function Settings() {
   const { settings, updateSetting } = useSettings();
 
   const handleResetStats = () => {
-    if (confirm("Are you sure you want to reset all your statistics? This action cannot be undone.")) {
+    if (
+      confirm(
+        "Are you sure you want to reset all your statistics? This action cannot be undone.",
+      )
+    ) {
       // Reset stats logic would go here
       alert("Statistics reset successfully!");
     }
@@ -25,7 +40,9 @@ export default function Settings() {
   };
 
   const SettingCard = ({ icon: Icon, title, children, delay = 0 }) => (
-    <Card className={`glass-card hover:scale-105 transition-all duration-500 animate-stagger-${delay + 1}`}>
+    <Card
+      className={`glass-card hover:scale-105 transition-all duration-500 animate-stagger-${delay + 1}`}
+    >
       <CardHeader>
         <CardTitle className="text-white text-xl flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center">
@@ -34,9 +51,7 @@ export default function Settings() {
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
-        {children}
-      </CardContent>
+      <CardContent className="space-y-6">{children}</CardContent>
     </Card>
   );
 
@@ -46,9 +61,7 @@ export default function Settings() {
         <div className="font-medium text-white text-lg">{title}</div>
         <div className="text-sm text-gray-400 mt-1">{description}</div>
       </div>
-      <div className="ml-4">
-        {children}
-      </div>
+      <div className="ml-4">{children}</div>
     </div>
   );
 
@@ -56,47 +69,53 @@ export default function Settings() {
     <div className="min-h-screen bg-black text-white relative">
       {/* Background effects */}
       <div className="fixed inset-0 bg-gradient-to-br from-sky-900/20 via-black to-blue-900/20"></div>
-      
+
       <Navigation />
 
       <div className="pt-24 p-6 max-w-4xl mx-auto space-y-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-black gradient-text mb-4">Settings</h1>
-          <p className="text-xl text-gray-300">Customize your WordleMates experience</p>
+          <h1 className="text-5xl md:text-7xl font-black gradient-text mb-4">
+            Settings
+          </h1>
+          <p className="text-xl text-gray-300">
+            Customize your WordleMates experience
+          </p>
         </div>
 
         {/* Game Settings */}
         <SettingCard icon={SettingsIcon} title="Game Settings" delay={0}>
-          <SettingItem 
-            title="Hard Mode" 
+          <SettingItem
+            title="Hard Mode"
             description="Any revealed hints must be used in subsequent guesses"
           >
             <Switch
               checked={settings.hardMode}
-              onCheckedChange={(checked) => updateSetting('hardMode', checked)}
+              onCheckedChange={(checked) => updateSetting("hardMode", checked)}
               className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
-          <SettingItem 
-            title="Dark Theme" 
+          <SettingItem
+            title="Dark Theme"
             description="Use dark theme for better visibility"
           >
             <Switch
               checked={settings.darkMode}
-              onCheckedChange={(checked) => updateSetting('darkMode', checked)}
+              onCheckedChange={(checked) => updateSetting("darkMode", checked)}
               className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
-          <SettingItem 
-            title="High Contrast" 
+          <SettingItem
+            title="High Contrast"
             description="Increase color contrast for accessibility"
           >
             <Switch
               checked={settings.highContrast}
-              onCheckedChange={(checked) => updateSetting('highContrast', checked)}
+              onCheckedChange={(checked) =>
+                updateSetting("highContrast", checked)
+              }
               className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
@@ -104,35 +123,41 @@ export default function Settings() {
 
         {/* Audio & Visual Settings */}
         <SettingCard icon={Volume2} title="Audio & Visual" delay={1}>
-          <SettingItem 
-            title="Sound Effects" 
+          <SettingItem
+            title="Sound Effects"
             description="Play audio feedback for game interactions"
           >
             <Switch
               checked={settings.soundEffects}
-              onCheckedChange={(checked) => updateSetting('soundEffects', checked)}
+              onCheckedChange={(checked) =>
+                updateSetting("soundEffects", checked)
+              }
               className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
-          <SettingItem 
-            title="Confetti Animation" 
+          <SettingItem
+            title="Confetti Animation"
             description="Celebrate victories with confetti"
           >
             <Switch
               checked={settings.confettiMode}
-              onCheckedChange={(checked) => updateSetting('confettiMode', checked)}
+              onCheckedChange={(checked) =>
+                updateSetting("confettiMode", checked)
+              }
               className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
-          <SettingItem 
-            title="Animations" 
+          <SettingItem
+            title="Animations"
             description="Enable smooth transitions and effects"
           >
             <Switch
               checked={settings.animations || true}
-              onCheckedChange={(checked) => updateSetting('animations', checked)}
+              onCheckedChange={(checked) =>
+                updateSetting("animations", checked)
+              }
               className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
@@ -140,8 +165,8 @@ export default function Settings() {
 
         {/* Notifications */}
         <SettingCard icon={Bell} title="Notifications" delay={2}>
-          <SettingItem 
-            title="Daily Reminders" 
+          <SettingItem
+            title="Daily Reminders"
             description="Get reminded to play your daily game"
           >
             <Switch
@@ -151,8 +176,8 @@ export default function Settings() {
             />
           </SettingItem>
 
-          <SettingItem 
-            title="Achievement Alerts" 
+          <SettingItem
+            title="Achievement Alerts"
             description="Notify when you unlock new achievements"
           >
             <Switch
@@ -179,7 +204,9 @@ export default function Settings() {
                   <div className="text-gray-400">player@example.com</div>
                   <div className="flex items-center gap-2 mt-1">
                     <Crown className="w-4 h-4 text-yellow-400" />
-                    <span className="text-yellow-400 text-sm font-medium">Premium Member</span>
+                    <span className="text-yellow-400 text-sm font-medium">
+                      Premium Member
+                    </span>
                   </div>
                 </div>
               </div>
@@ -220,15 +247,21 @@ export default function Settings() {
               <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl border border-yellow-500/20">
                 <Shield className="w-6 h-6 text-yellow-400" />
                 <div>
-                  <div className="font-medium text-white">Ad-Free Experience</div>
-                  <div className="text-sm text-gray-400">Enjoy uninterrupted gameplay</div>
+                  <div className="font-medium text-white">
+                    Ad-Free Experience
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    Enjoy uninterrupted gameplay
+                  </div>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl border border-yellow-500/20">
                 <Palette className="w-6 h-6 text-yellow-400" />
                 <div>
                   <div className="font-medium text-white">Exclusive Themes</div>
-                  <div className="text-sm text-gray-400">Access premium visual themes</div>
+                  <div className="text-sm text-gray-400">
+                    Access premium visual themes
+                  </div>
                 </div>
               </div>
             </div>
@@ -238,7 +271,10 @@ export default function Settings() {
         {/* Footer Actions */}
         <div className="flex flex-col sm:flex-row gap-4 pt-8">
           <Link to="/stats" className="flex-1">
-            <Button variant="outline" className="w-full glass border-white/30 hover:bg-white/10 transition-all duration-300 py-4 hover:scale-105">
+            <Button
+              variant="outline"
+              className="w-full glass border-white/30 hover:bg-white/10 transition-all duration-300 py-4 hover:scale-105"
+            >
               View Statistics
             </Button>
           </Link>

@@ -12,9 +12,22 @@ interface ConfettiPiece {
   rotationSpeed: number;
 }
 
-const colors = ['#22c55e', '#10b981', '#06d6a0', '#ffd23f', '#ff9770', '#f72585'];
+const colors = [
+  "#22c55e",
+  "#10b981",
+  "#06d6a0",
+  "#ffd23f",
+  "#ff9770",
+  "#f72585",
+];
 
-export default function Confetti({ active, onComplete }: { active: boolean; onComplete?: () => void }) {
+export default function Confetti({
+  active,
+  onComplete,
+}: {
+  active: boolean;
+  onComplete?: () => void;
+}) {
   const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
 
   useEffect(() => {
@@ -42,18 +55,18 @@ export default function Confetti({ active, onComplete }: { active: boolean; onCo
 
     // Animation loop
     const animate = () => {
-      setPieces(currentPieces => {
+      setPieces((currentPieces) => {
         if (currentPieces.length === 0) return currentPieces;
 
         const updatedPieces = currentPieces
-          .map(piece => ({
+          .map((piece) => ({
             ...piece,
             x: piece.x + piece.velocityX,
             y: piece.y + piece.velocityY,
             rotation: piece.rotation + piece.rotationSpeed,
             velocityY: piece.velocityY + 0.5, // gravity
           }))
-          .filter(piece => piece.y < window.innerHeight + 50);
+          .filter((piece) => piece.y < window.innerHeight + 50);
 
         if (updatedPieces.length === 0 && onComplete) {
           onComplete();
@@ -72,7 +85,7 @@ export default function Confetti({ active, onComplete }: { active: boolean; onCo
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      {pieces.map(piece => (
+      {pieces.map((piece) => (
         <div
           key={piece.id}
           className="absolute"
@@ -83,7 +96,7 @@ export default function Confetti({ active, onComplete }: { active: boolean; onCo
             height: piece.size,
             backgroundColor: piece.color,
             transform: `rotate(${piece.rotation}deg)`,
-            borderRadius: Math.random() > 0.5 ? '50%' : '0%',
+            borderRadius: Math.random() > 0.5 ? "50%" : "0%",
           }}
         />
       ))}

@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingUp, Target, Zap, Trophy, Gamepad2, Crown, Medal, Award } from "lucide-react";
+import {
+  TrendingUp,
+  Target,
+  Zap,
+  Trophy,
+  Gamepad2,
+  Crown,
+  Medal,
+  Award,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 
 export default function Stats() {
@@ -13,15 +22,23 @@ export default function Stats() {
     maxStreak: 12,
     averageGuesses: 3.8,
     totalWins: 21,
-    guessDistribution: [0, 2, 8, 10, 3, 1]
+    guessDistribution: [0, 2, 8, 10, 3, 1],
   };
 
   const StatCard = ({ icon: Icon, value, label, gradient, delay = 0 }) => (
-    <Card className={`glass-card hover:scale-105 transition-all duration-500 animate-stagger-${delay + 1} group overflow-hidden`}>
+    <Card
+      className={`glass-card hover:scale-105 transition-all duration-500 animate-stagger-${delay + 1} group overflow-hidden`}
+    >
       <CardContent className="p-6 text-center relative">
-        <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500" style={{ background: gradient }}></div>
+        <div
+          className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500"
+          style={{ background: gradient }}
+        ></div>
         <div className="relative z-10">
-          <Icon className="w-8 h-8 mx-auto mb-3 text-sky-400 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
+          <Icon
+            className="w-8 h-8 mx-auto mb-3 text-sky-400 animate-float"
+            style={{ animationDelay: `${delay * 0.2}s` }}
+          />
           <div className="text-3xl font-black gradient-text mb-1">{value}</div>
           <div className="text-sm text-gray-400 font-medium">{label}</div>
         </div>
@@ -29,15 +46,29 @@ export default function Stats() {
     </Card>
   );
 
-  const Achievement = ({ icon: Icon, title, description, unlocked = true, delay = 0 }) => (
-    <div className={`flex items-center gap-4 p-6 glass-card rounded-xl transition-all duration-500 hover:scale-105 animate-stagger-${delay + 1} ${unlocked ? '' : 'opacity-50'}`}>
-      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${unlocked ? 'bg-gradient-to-br from-yellow-400 to-orange-500' : 'bg-gray-600'}`}>
+  const Achievement = ({
+    icon: Icon,
+    title,
+    description,
+    unlocked = true,
+    delay = 0,
+  }) => (
+    <div
+      className={`flex items-center gap-4 p-6 glass-card rounded-xl transition-all duration-500 hover:scale-105 animate-stagger-${delay + 1} ${unlocked ? "" : "opacity-50"}`}
+    >
+      <div
+        className={`w-12 h-12 rounded-full flex items-center justify-center ${unlocked ? "bg-gradient-to-br from-yellow-400 to-orange-500" : "bg-gray-600"}`}
+      >
         <Icon className="w-6 h-6 text-white" />
       </div>
       <div className="flex-1">
         <div className="font-bold text-white text-lg">{title}</div>
         <div className="text-gray-400">{description}</div>
-        {unlocked && <div className="text-xs text-yellow-400 font-medium mt-1">✓ Unlocked</div>}
+        {unlocked && (
+          <div className="text-xs text-yellow-400 font-medium mt-1">
+            ✓ Unlocked
+          </div>
+        )}
       </div>
     </div>
   );
@@ -46,14 +77,18 @@ export default function Stats() {
     <div className="min-h-screen bg-black text-white relative">
       {/* Background effects */}
       <div className="fixed inset-0 bg-gradient-to-br from-sky-900/20 via-black to-blue-900/20"></div>
-      
+
       <Navigation />
 
       <div className="pt-24 p-6 max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-black gradient-text mb-4">Your Stats</h1>
-          <p className="text-xl text-gray-300">Track your WordleMates journey</p>
+          <h1 className="text-5xl md:text-7xl font-black gradient-text mb-4">
+            Your Stats
+          </h1>
+          <p className="text-xl text-gray-300">
+            Track your WordleMates journey
+          </p>
         </div>
 
         {/* Main Stats Grid */}
@@ -65,17 +100,17 @@ export default function Stats() {
             gradient="linear-gradient(135deg, #38bdf8, #3b82f6)"
             delay={0}
           />
-          <StatCard 
-            icon={Trophy} 
-            value={`${stats.winPercentage}%`} 
-            label="Win Rate" 
+          <StatCard
+            icon={Trophy}
+            value={`${stats.winPercentage}%`}
+            label="Win Rate"
             gradient="linear-gradient(135deg, #10b981, #059669)"
             delay={1}
           />
-          <StatCard 
-            icon={Zap} 
-            value={stats.currentStreak} 
-            label="Current Streak" 
+          <StatCard
+            icon={Zap}
+            value={stats.currentStreak}
+            label="Current Streak"
             gradient="linear-gradient(135deg, #f59e0b, #d97706)"
             delay={2}
           />
@@ -97,11 +132,15 @@ export default function Stats() {
                   <Target className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">{stats.averageGuesses}</div>
+                  <div className="text-2xl font-bold text-white">
+                    {stats.averageGuesses}
+                  </div>
                   <div className="text-gray-400">Average Guesses</div>
                 </div>
               </div>
-              <div className="text-gray-300">You're getting better at finding words efficiently!</div>
+              <div className="text-gray-300">
+                You're getting better at finding words efficiently!
+              </div>
             </CardContent>
           </Card>
 
@@ -112,11 +151,15 @@ export default function Stats() {
                   <Crown className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">{stats.totalWins}</div>
+                  <div className="text-2xl font-bold text-white">
+                    {stats.totalWins}
+                  </div>
                   <div className="text-gray-400">Total Victories</div>
                 </div>
               </div>
-              <div className="text-gray-300">Keep up the excellent word-guessing skills!</div>
+              <div className="text-gray-300">
+                Keep up the excellent word-guessing skills!
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -139,14 +182,18 @@ export default function Stats() {
                     {index + 1}
                   </div>
                   <div className="flex-1 bg-gray-800/50 rounded-full h-8 relative overflow-hidden">
-                    <div 
+                    <div
                       className="bg-gradient-to-r from-sky-500 to-blue-500 h-full rounded-full flex items-center justify-end pr-3 transition-all duration-1000 ease-out"
-                      style={{ 
+                      style={{
                         width: `${count === 0 ? 0 : Math.max(10, (count / Math.max(...stats.guessDistribution)) * 100)}%`,
-                        animationDelay: `${index * 0.1}s`
+                        animationDelay: `${index * 0.1}s`,
                       }}
                     >
-                      {count > 0 && <span className="text-sm font-bold text-white">{count}</span>}
+                      {count > 0 && (
+                        <span className="text-sm font-bold text-white">
+                          {count}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -167,30 +214,30 @@ export default function Stats() {
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
-              <Achievement 
-                icon={Target} 
-                title="First Victory" 
+              <Achievement
+                icon={Target}
+                title="First Victory"
                 description="Complete your first game successfully"
                 unlocked={true}
                 delay={0}
               />
-              <Achievement 
-                icon={Zap} 
-                title="Streak Master" 
+              <Achievement
+                icon={Zap}
+                title="Streak Master"
                 description="Win 5 games in a row"
                 unlocked={true}
                 delay={1}
               />
-              <Achievement 
-                icon={Medal} 
-                title="Word Wizard" 
+              <Achievement
+                icon={Medal}
+                title="Word Wizard"
                 description="Guess a word in 2 tries"
                 unlocked={true}
                 delay={2}
               />
-              <Achievement 
-                icon={Crown} 
-                title="Champion" 
+              <Achievement
+                icon={Crown}
+                title="Champion"
                 description="Reach a 10-game win streak"
                 unlocked={false}
                 delay={3}
@@ -208,7 +255,10 @@ export default function Stats() {
             </Button>
           </Link>
           <Link to="/leaderboard">
-            <Button variant="outline" className="px-12 py-6 text-xl glass border-white/30 hover:bg-white/10 transition-all duration-500 hover:scale-105">
+            <Button
+              variant="outline"
+              className="px-12 py-6 text-xl glass border-white/30 hover:bg-white/10 transition-all duration-500 hover:scale-105"
+            >
               <Trophy className="w-6 h-6 mr-3" />
               Leaderboard
             </Button>

@@ -11,36 +11,46 @@ const WORD_LENGTH = 5;
 const MAX_ATTEMPTS = 6;
 
 // Random target word from the target words list
-const TARGET_WORD = TARGET_WORDS[Math.floor(Math.random() * TARGET_WORDS.length)];
+const TARGET_WORD =
+  TARGET_WORDS[Math.floor(Math.random() * TARGET_WORDS.length)];
 
-type TileStatus = 'correct' | 'present' | 'absent' | 'empty';
+type TileStatus = "correct" | "present" | "absent" | "empty";
 
 interface Tile {
   letter: string;
   status: TileStatus;
 }
 
-const GameTile = ({ tile, isActive, delay = 0 }: { tile: Tile; isActive: boolean; delay?: number }) => {
+const GameTile = ({
+  tile,
+  isActive,
+  delay = 0,
+}: {
+  tile: Tile;
+  isActive: boolean;
+  delay?: number;
+}) => {
   const getStatusStyle = () => {
     switch (tile.status) {
-      case 'correct': 
-        return 'bg-gradient-to-br from-emerald-400 to-green-600 border-emerald-300 text-white shadow-xl shadow-emerald-500/40 animate-pulse-glow';
-      case 'present': 
-        return 'bg-gradient-to-br from-amber-400 to-yellow-600 border-amber-300 text-white shadow-xl shadow-amber-500/40 animate-pulse-glow';
-      case 'absent': 
-        return 'bg-gradient-to-br from-gray-600 to-gray-800 border-gray-500 text-white shadow-xl shadow-gray-500/30';
-      default: 
+      case "correct":
+        return "bg-gradient-to-br from-emerald-400 to-green-600 border-emerald-300 text-white shadow-xl shadow-emerald-500/40 animate-pulse-glow";
+      case "present":
+        return "bg-gradient-to-br from-amber-400 to-yellow-600 border-amber-300 text-white shadow-xl shadow-amber-500/40 animate-pulse-glow";
+      case "absent":
+        return "bg-gradient-to-br from-gray-600 to-gray-800 border-gray-500 text-white shadow-xl shadow-gray-500/30";
+      default:
         return tile.letter
-          ? 'glass border-white/30 text-white shadow-lg scale-105'
-          : 'glass-card border-white/10 text-white/60 shadow-lg';
+          ? "glass border-white/30 text-white shadow-lg scale-105"
+          : "glass-card border-white/10 text-white/60 shadow-lg";
     }
   };
 
-  const activeStyle = isActive ? 'ring-2 ring-sky-400 scale-110' : '';
-  const animationDelay = tile.status !== 'empty' ? { animationDelay: `${delay * 0.1}s` } : {};
+  const activeStyle = isActive ? "ring-2 ring-sky-400 scale-110" : "";
+  const animationDelay =
+    tile.status !== "empty" ? { animationDelay: `${delay * 0.1}s` } : {};
 
   return (
-    <div 
+    <div
       className={`w-16 h-16 border-2 flex items-center justify-center font-bold text-2xl transition-all duration-500 tile-3d ${getStatusStyle()} ${activeStyle}`}
       style={animationDelay}
     >
@@ -53,7 +63,7 @@ const KeyboardKey = ({
   letter,
   onClick,
   status,
-  isSpecial = false
+  isSpecial = false,
 }: {
   letter: string;
   onClick: () => void;
@@ -61,12 +71,16 @@ const KeyboardKey = ({
   isSpecial?: boolean;
 }) => {
   const getKeyStyle = () => {
-    if (isSpecial) return 'glass-button hover:scale-105 text-white font-bold';
+    if (isSpecial) return "glass-button hover:scale-105 text-white font-bold";
     switch (status) {
-      case 'correct': return 'bg-gradient-to-br from-emerald-400 to-green-600 text-white shadow-lg shadow-emerald-500/30 hover:scale-105';
-      case 'present': return 'bg-gradient-to-br from-amber-400 to-yellow-600 text-white shadow-lg shadow-amber-500/30 hover:scale-105';
-      case 'absent': return 'bg-gradient-to-br from-gray-600 to-gray-800 text-white shadow-lg shadow-gray-500/20 hover:scale-105';
-      default: return 'glass border-white/20 text-white hover:scale-105 hover:bg-white/10';
+      case "correct":
+        return "bg-gradient-to-br from-emerald-400 to-green-600 text-white shadow-lg shadow-emerald-500/30 hover:scale-105";
+      case "present":
+        return "bg-gradient-to-br from-amber-400 to-yellow-600 text-white shadow-lg shadow-amber-500/30 hover:scale-105";
+      case "absent":
+        return "bg-gradient-to-br from-gray-600 to-gray-800 text-white shadow-lg shadow-gray-500/20 hover:scale-105";
+      default:
+        return "glass border-white/20 text-white hover:scale-105 hover:bg-white/10";
     }
   };
 
@@ -74,7 +88,7 @@ const KeyboardKey = ({
     <Button
       onClick={onClick}
       className={`${getKeyStyle()} font-semibold transition-all duration-300 rounded-xl active:scale-95 ${
-        isSpecial ? 'px-6 py-7 text-sm' : 'p-4 min-w-[48px] h-16'
+        isSpecial ? "px-6 py-7 text-sm" : "p-4 min-w-[48px] h-16"
       }`}
       variant="ghost"
     >
@@ -87,35 +101,43 @@ export default function Game() {
   const { settings } = useSettings();
   const { toast } = useToast();
   const [grid, setGrid] = useState<Tile[][]>(() =>
-    Array(MAX_ATTEMPTS).fill(null).map(() =>
-      Array(WORD_LENGTH).fill(null).map(() => ({ letter: '', status: 'empty' as TileStatus }))
-    )
+    Array(MAX_ATTEMPTS)
+      .fill(null)
+      .map(() =>
+        Array(WORD_LENGTH)
+          .fill(null)
+          .map(() => ({ letter: "", status: "empty" as TileStatus })),
+      ),
   );
   const [currentRow, setCurrentRow] = useState(0);
   const [currentCol, setCurrentCol] = useState(0);
-  const [gameStatus, setGameStatus] = useState<'playing' | 'won' | 'lost'>('playing');
-  const [keyboardStatus, setKeyboardStatus] = useState<Record<string, TileStatus>>({});
+  const [gameStatus, setGameStatus] = useState<"playing" | "won" | "lost">(
+    "playing",
+  );
+  const [keyboardStatus, setKeyboardStatus] = useState<
+    Record<string, TileStatus>
+  >({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const qwertyLayout = [
-    ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-    ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACK']
+    ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+    ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+    ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "BACK"],
   ];
 
   // Create floating particles effect
   useEffect(() => {
-    if (gameStatus === 'won') {
+    if (gameStatus === "won") {
       const createParticle = () => {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 10 + 's';
-        
-        const particles = document.querySelector('.game-particles');
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.animationDelay = Math.random() * 10 + "s";
+
+        const particles = document.querySelector(".game-particles");
         if (particles) {
           particles.appendChild(particle);
-          
+
           setTimeout(() => {
             particle.remove();
           }, 15000);
@@ -123,7 +145,7 @@ export default function Game() {
       };
 
       const interval = setInterval(createParticle, 200);
-      
+
       // Create initial burst
       for (let i = 0; i < 20; i++) {
         setTimeout(createParticle, i * 100);
@@ -134,26 +156,26 @@ export default function Game() {
   }, [gameStatus]);
 
   const checkWord = (word: string) => {
-    const result: TileStatus[] = Array(WORD_LENGTH).fill('absent');
-    const targetLetters = TARGET_WORD.split('');
-    const wordLetters = word.split('');
+    const result: TileStatus[] = Array(WORD_LENGTH).fill("absent");
+    const targetLetters = TARGET_WORD.split("");
+    const wordLetters = word.split("");
 
     // First pass: mark correct letters
     for (let i = 0; i < WORD_LENGTH; i++) {
       if (wordLetters[i] === targetLetters[i]) {
-        result[i] = 'correct';
-        targetLetters[i] = '*'; // Mark as used
-        wordLetters[i] = '*'; // Mark as processed
+        result[i] = "correct";
+        targetLetters[i] = "*"; // Mark as used
+        wordLetters[i] = "*"; // Mark as processed
       }
     }
 
     // Second pass: mark present letters
     for (let i = 0; i < WORD_LENGTH; i++) {
-      if (wordLetters[i] !== '*') {
+      if (wordLetters[i] !== "*") {
         const targetIndex = targetLetters.indexOf(wordLetters[i]);
         if (targetIndex !== -1) {
-          result[i] = 'present';
-          targetLetters[targetIndex] = '*'; // Mark as used
+          result[i] = "present";
+          targetLetters[targetIndex] = "*"; // Mark as used
         }
       }
     }
@@ -166,11 +188,13 @@ export default function Game() {
     for (let i = 0; i < word.length; i++) {
       const letter = word[i];
       const status = statuses[i];
-      
+
       // Don't downgrade keyboard status (correct > present > absent)
-      if (!newKeyboardStatus[letter] || 
-          (newKeyboardStatus[letter] === 'absent' && status !== 'absent') ||
-          (newKeyboardStatus[letter] === 'present' && status === 'correct')) {
+      if (
+        !newKeyboardStatus[letter] ||
+        (newKeyboardStatus[letter] === "absent" && status !== "absent") ||
+        (newKeyboardStatus[letter] === "present" && status === "correct")
+      ) {
         newKeyboardStatus[letter] = status;
       }
     }
@@ -187,7 +211,7 @@ export default function Game() {
       return;
     }
 
-    const currentWord = grid[currentRow].map(tile => tile.letter).join('');
+    const currentWord = grid[currentRow].map((tile) => tile.letter).join("");
 
     if (!VALID_WORDS.includes(currentWord)) {
       toast({
@@ -196,11 +220,13 @@ export default function Game() {
         variant: "destructive",
       });
       // Add shake animation to the current row
-      const currentRowElement = document.querySelector(`[data-row="${currentRow}"]`);
+      const currentRowElement = document.querySelector(
+        `[data-row="${currentRow}"]`,
+      );
       if (currentRowElement) {
-        currentRowElement.classList.add('animate-shake');
+        currentRowElement.classList.add("animate-shake");
         setTimeout(() => {
-          currentRowElement.classList.remove('animate-shake');
+          currentRowElement.classList.remove("animate-shake");
         }, 500);
       }
       return;
@@ -218,12 +244,12 @@ export default function Game() {
 
     // Check game status
     if (currentWord === TARGET_WORD) {
-      setGameStatus('won');
+      setGameStatus("won");
       if (settings.confettiMode) {
         setShowConfetti(true);
       }
     } else if (currentRow === MAX_ATTEMPTS - 1) {
-      setGameStatus('lost');
+      setGameStatus("lost");
     } else {
       setCurrentRow(currentRow + 1);
       setCurrentCol(0);
@@ -231,7 +257,7 @@ export default function Game() {
   };
 
   const addLetter = (letter: string) => {
-    if (currentCol >= WORD_LENGTH || gameStatus !== 'playing') return;
+    if (currentCol >= WORD_LENGTH || gameStatus !== "playing") return;
 
     const newGrid = [...grid];
     newGrid[currentRow][currentCol].letter = letter;
@@ -240,67 +266,75 @@ export default function Game() {
   };
 
   const removeLetter = () => {
-    if (currentCol <= 0 || gameStatus !== 'playing') return;
+    if (currentCol <= 0 || gameStatus !== "playing") return;
 
     const newGrid = [...grid];
-    newGrid[currentRow][currentCol - 1].letter = '';
+    newGrid[currentRow][currentCol - 1].letter = "";
     setGrid(newGrid);
     setCurrentCol(currentCol - 1);
   };
 
-  const handleKeyPress = useCallback((e: KeyboardEvent) => {
-    if (gameStatus !== 'playing') return;
+  const handleKeyPress = useCallback(
+    (e: KeyboardEvent) => {
+      if (gameStatus !== "playing") return;
 
-    if (e.key === 'Enter') {
-      submitWord();
-    } else if (e.key === 'Backspace') {
-      removeLetter();
-    } else if (/^[A-Za-z]$/.test(e.key)) {
-      addLetter(e.key.toUpperCase());
-    }
-  }, [currentRow, currentCol, gameStatus]);
+      if (e.key === "Enter") {
+        submitWord();
+      } else if (e.key === "Backspace") {
+        removeLetter();
+      } else if (/^[A-Za-z]$/.test(e.key)) {
+        addLetter(e.key.toUpperCase());
+      }
+    },
+    [currentRow, currentCol, gameStatus],
+  );
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
   }, [handleKeyPress]);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Floating particles for celebration */}
       <div className="game-particles fixed inset-0 pointer-events-none z-10"></div>
-      
+
       {/* Background gradient */}
       <div className="fixed inset-0 bg-gradient-to-br from-sky-900/20 via-black to-blue-900/20"></div>
-      
+
       <Navigation />
-      <Confetti active={showConfetti} onComplete={() => setShowConfetti(false)} />
+      <Confetti
+        active={showConfetti}
+        onComplete={() => setShowConfetti(false)}
+      />
 
       {/* Game Container */}
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-6 relative z-20">
-        
         {/* Game Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-black gradient-text mb-2">WordleMates</h1>
-          <p className="text-gray-300 text-lg">Guess the 5-letter word in 6 tries</p>
+          <h1 className="text-4xl md:text-6xl font-black gradient-text mb-2">
+            WordleMates
+          </h1>
+          <p className="text-gray-300 text-lg">
+            Guess the 5-letter word in 6 tries
+          </p>
         </div>
 
         {/* Game Status */}
-        {gameStatus !== 'playing' && (
+        {gameStatus !== "playing" && (
           <div className="mb-8 text-center glass-card p-8 rounded-2xl border border-white/20 max-w-md">
             <div className="text-6xl mb-4">
-              {gameStatus === 'won' ? '🎉' : '😅'}
+              {gameStatus === "won" ? "🎉" : "😅"}
             </div>
             <h2 className="text-3xl font-bold mb-4 gradient-text">
-              {gameStatus === 'won' ? 'Congratulations!' : 'Game Over'}
+              {gameStatus === "won" ? "Congratulations!" : "Game Over"}
             </h2>
             <p className="text-xl text-gray-300 mb-6">
-              {gameStatus === 'won'
-                ? `You guessed it in ${currentRow + 1} ${currentRow === 0 ? 'try' : 'tries'}!`
-                : `The word was: ${TARGET_WORD}`
-              }
+              {gameStatus === "won"
+                ? `You guessed it in ${currentRow + 1} ${currentRow === 0 ? "try" : "tries"}!`
+                : `The word was: ${TARGET_WORD}`}
             </p>
-            {gameStatus === 'won' && (
+            {gameStatus === "won" && (
               <div className="flex justify-center gap-2 text-yellow-400">
                 <Trophy className="w-6 h-6" />
                 <span className="font-semibold">Victory!</span>
@@ -335,20 +369,20 @@ export default function Game() {
                   key={key}
                   letter={key}
                   onClick={() => {
-                    if (key === 'ENTER') submitWord();
-                    else if (key === 'BACK') removeLetter();
+                    if (key === "ENTER") submitWord();
+                    else if (key === "BACK") removeLetter();
                     else addLetter(key);
                   }}
                   status={keyboardStatus[key]}
-                  isSpecial={key === 'ENTER' || key === 'BACK'}
+                  isSpecial={key === "ENTER" || key === "BACK"}
                 />
               ))}
             </div>
           ))}
         </div>
 
-        {gameStatus !== 'playing' && (
-          <Button 
+        {gameStatus !== "playing" && (
+          <Button
             className="mt-8 px-10 py-6 text-xl glass-button hover:scale-105 transition-all duration-500 group"
             onClick={() => window.location.reload()}
           >
@@ -360,11 +394,15 @@ export default function Game() {
         {/* Game Stats */}
         <div className="mt-8 flex gap-6 text-center">
           <div className="glass-card p-4 rounded-xl border border-white/10">
-            <div className="text-2xl font-bold gradient-text">{currentRow + (gameStatus === 'playing' ? 0 : 1)}</div>
+            <div className="text-2xl font-bold gradient-text">
+              {currentRow + (gameStatus === "playing" ? 0 : 1)}
+            </div>
             <div className="text-sm text-gray-400">Attempts</div>
           </div>
           <div className="glass-card p-4 rounded-xl border border-white/10">
-            <div className="text-2xl font-bold gradient-text">{MAX_ATTEMPTS - currentRow - (gameStatus === 'playing' ? 1 : 0)}</div>
+            <div className="text-2xl font-bold gradient-text">
+              {MAX_ATTEMPTS - currentRow - (gameStatus === "playing" ? 1 : 0)}
+            </div>
             <div className="text-sm text-gray-400">Remaining</div>
           </div>
         </div>

@@ -4,18 +4,30 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HelpCircle, Target, Clock, Users, Trophy } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
-const GameTile = ({ letter, status }: { letter: string; status: 'correct' | 'present' | 'absent' | 'empty' }) => {
+const GameTile = ({
+  letter,
+  status,
+}: {
+  letter: string;
+  status: "correct" | "present" | "absent" | "empty";
+}) => {
   const getStatusColor = () => {
     switch (status) {
-      case 'correct': return 'bg-wordle-green border-wordle-green text-white';
-      case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white';
-      case 'absent': return 'bg-wordle-gray border-wordle-gray text-white';
-      default: return 'bg-gray-700 border-gray-500 text-white';
+      case "correct":
+        return "bg-wordle-green border-wordle-green text-white";
+      case "present":
+        return "bg-wordle-yellow border-wordle-yellow text-white";
+      case "absent":
+        return "bg-wordle-gray border-wordle-gray text-white";
+      default:
+        return "bg-gray-700 border-gray-500 text-white";
     }
   };
 
   return (
-    <div className={`w-12 h-12 border-2 flex items-center justify-center font-bold text-lg rounded ${getStatusColor()}`}>
+    <div
+      className={`w-12 h-12 border-2 flex items-center justify-center font-bold text-lg rounded ${getStatusColor()}`}
+    >
       {letter}
     </div>
   );
@@ -38,12 +50,16 @@ export default function Help() {
           <CardContent className="space-y-4">
             <div className="text-gray-300">
               <p className="mb-4">
-                Guess the <strong className="text-white">WORDLE</strong> in 6 tries or less. Each guess must be a valid 5-letter word.
+                Guess the <strong className="text-white">WORDLE</strong> in 6
+                tries or less. Each guess must be a valid 5-letter word.
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>You have 6 attempts to guess the correct word</li>
                 <li>Each guess must be a valid 5-letter word</li>
-                <li>After each guess, the color of the tiles will change to show how close your guess was</li>
+                <li>
+                  After each guess, the color of the tiles will change to show
+                  how close your guess was
+                </li>
                 <li>Letters can appear multiple times in the target word</li>
               </ul>
             </div>
@@ -69,7 +85,9 @@ export default function Help() {
                 <GameTile letter="Y" status="empty" />
               </div>
               <p className="text-gray-300">
-                <span className="text-green-400 font-semibold">Green:</span> The letter <strong>W</strong> is in the word and in the correct spot.
+                <span className="text-green-400 font-semibold">Green:</span> The
+                letter <strong>W</strong> is in the word and in the correct
+                spot.
               </p>
             </div>
 
@@ -83,7 +101,9 @@ export default function Help() {
                 <GameTile letter="S" status="empty" />
               </div>
               <p className="text-gray-300">
-                <span className="text-yellow-400 font-semibold">Yellow:</span> The letter <strong>I</strong> is in the word but in the wrong spot.
+                <span className="text-yellow-400 font-semibold">Yellow:</span>{" "}
+                The letter <strong>I</strong> is in the word but in the wrong
+                spot.
               </p>
             </div>
 
@@ -97,7 +117,8 @@ export default function Help() {
                 <GameTile letter="E" status="empty" />
               </div>
               <p className="text-gray-300">
-                <span className="text-gray-400 font-semibold">Gray:</span> The letter <strong>V</strong> is not in the word in any spot.
+                <span className="text-gray-400 font-semibold">Gray:</span> The
+                letter <strong>V</strong> is not in the word in any spot.
               </p>
             </div>
           </CardContent>
@@ -114,7 +135,9 @@ export default function Help() {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-white mb-2">Starting Words</h4>
+                <h4 className="font-semibold text-white mb-2">
+                  Starting Words
+                </h4>
                 <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
                   <li>Use words with common vowels (A, E, I, O, U)</li>
                   <li>Include frequent consonants (R, S, T, L, N)</li>
@@ -145,10 +168,22 @@ export default function Help() {
             <div className="text-gray-300">
               <h4 className="font-semibold text-white mb-2">Coming Soon!</h4>
               <ul className="list-disc list-inside space-y-2">
-                <li><strong>Private Rooms:</strong> Create rooms and invite friends with a code</li>
-                <li><strong>Real-time Competition:</strong> Race against friends with the same word</li>
-                <li><strong>Leaderboards:</strong> See daily, weekly, and all-time top players</li>
-                <li><strong>Team Challenges:</strong> Collaborate or compete in groups</li>
+                <li>
+                  <strong>Private Rooms:</strong> Create rooms and invite
+                  friends with a code
+                </li>
+                <li>
+                  <strong>Real-time Competition:</strong> Race against friends
+                  with the same word
+                </li>
+                <li>
+                  <strong>Leaderboards:</strong> See daily, weekly, and all-time
+                  top players
+                </li>
+                <li>
+                  <strong>Team Challenges:</strong> Collaborate or compete in
+                  groups
+                </li>
               </ul>
             </div>
           </CardContent>
@@ -165,12 +200,15 @@ export default function Help() {
           <CardContent>
             <div className="text-gray-300">
               <p className="mb-4">
-                In Hard Mode, any revealed hints must be used in subsequent guesses:
+                In Hard Mode, any revealed hints must be used in subsequent
+                guesses:
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>Green letters must stay in the same position</li>
                 <li>Yellow letters must be included in your next guess</li>
-                <li>This makes the game more challenging but also more strategic</li>
+                <li>
+                  This makes the game more challenging but also more strategic
+                </li>
               </ul>
             </div>
           </CardContent>
@@ -184,7 +222,10 @@ export default function Help() {
             </Button>
           </Link>
           <Link to="/settings" className="flex-1">
-            <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-700">
+            <Button
+              variant="outline"
+              className="w-full border-gray-600 text-gray-300 hover:bg-gray-700"
+            >
               Settings
             </Button>
           </Link>
