@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Confetti from "@/components/Confetti";
 import { useSettings } from "@/contexts/SettingsContext";
 import { VALID_WORDS, TARGET_WORDS } from "@/data/words";
+import { useToast } from "@/hooks/use-toast";
 
 const WORD_LENGTH = 5;
 const MAX_ATTEMPTS = 6;
