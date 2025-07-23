@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Menu, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import Navigation from "@/components/Navigation";
 
 const WORD_LENGTH = 5;
 const MAX_ATTEMPTS = 6;
@@ -197,25 +196,7 @@ export default function Game() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 border-b border-gray-700">
-        <Link to="/">
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <ArrowLeft className="w-6 h-6" />
-          </Button>
-        </Link>
-        
-        <h1 className="text-2xl font-bold gradient-text">🧩 WordleMates</h1>
-        
-        <div className="flex gap-2">
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <Menu className="w-6 h-6" />
-          </Button>
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <User className="w-6 h-6" />
-          </Button>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Game Container */}
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4">
