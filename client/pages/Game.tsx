@@ -38,31 +38,31 @@ const GameTile = ({ tile, isActive }: { tile: Tile; isActive: boolean }) => {
   );
 };
 
-const KeyboardKey = ({ 
-  letter, 
-  onClick, 
-  status, 
-  isSpecial = false 
-}: { 
-  letter: string; 
-  onClick: () => void; 
+const KeyboardKey = ({
+  letter,
+  onClick,
+  status,
+  isSpecial = false
+}: {
+  letter: string;
+  onClick: () => void;
   status?: TileStatus;
   isSpecial?: boolean;
 }) => {
   const getKeyColor = () => {
-    if (isSpecial) return 'bg-gray-600 hover:bg-gray-500';
+    if (isSpecial) return 'bg-muted hover:bg-muted/80 text-foreground';
     switch (status) {
       case 'correct': return 'bg-wordle-green text-white';
-      case 'present': return 'bg-wordle-yellow text-black';
-      case 'absent': return 'bg-gray-600 text-gray-300';
-      default: return 'bg-gray-500 hover:bg-gray-400 text-white';
+      case 'present': return 'bg-wordle-yellow text-white';
+      case 'absent': return 'bg-wordle-gray text-white';
+      default: return 'bg-muted hover:bg-muted/80 text-foreground';
     }
   };
 
   return (
     <Button
       onClick={onClick}
-      className={`${getKeyColor()} font-semibold transition-all duration-200 ${
+      className={`${getKeyColor()} font-semibold transition-all duration-200 rounded ${
         isSpecial ? 'px-4 py-6 text-sm' : 'p-4 min-w-[44px] h-14'
       }`}
       variant="secondary"
