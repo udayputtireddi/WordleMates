@@ -134,7 +134,7 @@ export default function Index() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="px-8 py-6 text-lg bg-wordle-green hover:bg-wordle-green/90 text-white transition-all duration-300">
+                  <Button size="lg" className="px-8 py-6 text-lg bg-wordle-green hover:bg-wordle-green/90 text-white transition-all duration-300 hover:scale-105 neon-glow animate-pulse-glow">
                     Login to Play
                   </Button>
                 </DialogTrigger>
