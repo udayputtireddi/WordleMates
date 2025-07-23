@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Confetti from "@/components/Confetti";
 import { useSettings } from "@/contexts/SettingsContext";
+import { VALID_WORDS, TARGET_WORDS } from "@/data/words";
 
 const WORD_LENGTH = 5;
 const MAX_ATTEMPTS = 6;
 
-// Simple word list for demo - in a real app this would come from your backend
-const VALID_WORDS = ['REACT', 'SWIFT', 'PHONE', 'HOUSE', 'PLANT', 'MUSIC', 'DANCE', 'LIGHT', 'WORLD', 'MAGIC'];
-const TARGET_WORD = VALID_WORDS[Math.floor(Math.random() * VALID_WORDS.length)];
+// Random target word from the target words list
+const TARGET_WORD = TARGET_WORDS[Math.floor(Math.random() * TARGET_WORDS.length)];
 
 type TileStatus = 'correct' | 'present' | 'absent' | 'empty';
 
