@@ -118,11 +118,81 @@
     animation: glow 2s ease-in-out infinite alternate;
   }
 
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-matrix {
+    animation: matrixFall 20s linear infinite;
+  }
+
+  .animate-cyber-glow {
+    animation: cyberGlow 3s ease-in-out infinite alternate;
+  }
+
   .gradient-text {
-    background: linear-gradient(135deg, #22c55e, #10b981);
+    background: linear-gradient(135deg, #00ff88, #00ccff, #ff00ff);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 4s ease-in-out infinite;
+  }
+
+  .cyber-border {
+    position: relative;
+    border: 1px solid transparent;
+    background: linear-gradient(45deg, #00ff88, #00ccff) border-box;
+    border-radius: 8px;
+  }
+
+  .cyber-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(45deg, #00ff88, #00ccff, #ff00ff);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  .neon-glow {
+    box-shadow:
+      0 0 5px #00ff88,
+      0 0 10px #00ff88,
+      0 0 15px #00ff88,
+      0 0 20px #00ff88;
+  }
+
+  .neon-text {
+    color: #00ff88;
+    text-shadow:
+      0 0 5px #00ff88,
+      0 0 10px #00ff88,
+      0 0 15px #00ff88,
+      0 0 20px #00ff88;
+  }
+
+  .holographic {
+    background: linear-gradient(
+      45deg,
+      rgba(0, 255, 136, 0.1),
+      rgba(0, 204, 255, 0.1),
+      rgba(255, 0, 255, 0.1)
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+  }
+
+  .cyber-grid {
+    background-image:
+      linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 }
 
