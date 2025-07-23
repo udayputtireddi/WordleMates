@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { Settings as SettingsIcon, Volume2, Zap, RotateCcw, LogOut } from "lucide-react";
+import { Settings as SettingsIcon, Volume2, Zap, RotateCcw, LogOut, User } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useSettings } from "@/contexts/SettingsContext";
 
