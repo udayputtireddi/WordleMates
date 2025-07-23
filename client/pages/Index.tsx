@@ -103,63 +103,103 @@ export default function Index() {
             Play together, compete, and master the art of words.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="px-8 py-6 text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 hover:scale-105">
-                  Login to Play
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
-                <DialogHeader>
-                  <DialogTitle className="text-white">Welcome Back!</DialogTitle>
-                </DialogHeader>
-                <form onSubmit={handleLogin} className="space-y-4">
-                  <div>
-                    <Label htmlFor="email" className="text-gray-300">Email</Label>
-                    <Input id="email" type="email" required className="bg-gray-700 border-gray-600 text-white" />
-                  </div>
-                  <div>
-                    <Label htmlFor="password" className="text-gray-300">Password</Label>
-                    <Input id="password" type="password" required className="bg-gray-700 border-gray-600 text-white" />
-                  </div>
-                  <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
-                    Login
+          {!isAuthenticated ? (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="px-8 py-6 text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 hover:scale-105">
+                    Login to Play
                   </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+                  <DialogHeader>
+                    <DialogTitle className="text-white">Welcome Back!</DialogTitle>
+                  </DialogHeader>
+                  <form onSubmit={handleLogin} className="space-y-4">
+                    <div>
+                      <Label htmlFor="email" className="text-gray-300">Email</Label>
+                      <Input id="email" type="email" required className="bg-gray-700 border-gray-600 text-white" />
+                    </div>
+                    <div>
+                      <Label htmlFor="password" className="text-gray-300">Password</Label>
+                      <Input id="password" type="password" required className="bg-gray-700 border-gray-600 text-white" />
+                    </div>
+                    <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
+                      Login
+                    </Button>
+                  </form>
+                </DialogContent>
+              </Dialog>
 
-            <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-green-600 text-green-400 hover:bg-green-600 hover:text-white transition-all duration-300 hover:scale-105">
-                  Sign Up Free
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
-                <DialogHeader>
-                  <DialogTitle className="text-white">Join WordleMates!</DialogTitle>
-                </DialogHeader>
-                <form onSubmit={handleSignup} className="space-y-4">
-                  <div>
-                    <Label htmlFor="username" className="text-gray-300">Username</Label>
-                    <Input id="username" required className="bg-gray-700 border-gray-600 text-white" />
-                  </div>
-                  <div>
-                    <Label htmlFor="signup-email" className="text-gray-300">Email</Label>
-                    <Input id="signup-email" type="email" required className="bg-gray-700 border-gray-600 text-white" />
-                  </div>
-                  <div>
-                    <Label htmlFor="signup-password" className="text-gray-300">Password</Label>
-                    <Input id="signup-password" type="password" required className="bg-gray-700 border-gray-600 text-white" />
-                  </div>
-                  <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
-                    Create Account
+              <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-green-600 text-green-400 hover:bg-green-600 hover:text-white transition-all duration-300 hover:scale-105">
+                    Sign Up Free
                   </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
-          </div>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+                  <DialogHeader>
+                    <DialogTitle className="text-white">Join WordleMates!</DialogTitle>
+                  </DialogHeader>
+                  <form onSubmit={handleSignup} className="space-y-4">
+                    <div>
+                      <Label htmlFor="username" className="text-gray-300">Username</Label>
+                      <Input id="username" required className="bg-gray-700 border-gray-600 text-white" />
+                    </div>
+                    <div>
+                      <Label htmlFor="signup-email" className="text-gray-300">Email</Label>
+                      <Input id="signup-email" type="email" required className="bg-gray-700 border-gray-600 text-white" />
+                    </div>
+                    <div>
+                      <Label htmlFor="signup-password" className="text-gray-300">Password</Label>
+                      <Input id="signup-password" type="password" required className="bg-gray-700 border-gray-600 text-white" />
+                    </div>
+                    <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
+                      Create Account
+                    </Button>
+                  </form>
+                </DialogContent>
+              </Dialog>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+              <Link to="/game">
+                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <CardContent className="p-6 text-center">
+                    <GameController2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                    <div className="text-white font-medium">Play</div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link to="/stats">
+                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <CardContent className="p-6 text-center">
+                    <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                    <div className="text-white font-medium">Stats</div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link to="/settings">
+                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <CardContent className="p-6 text-center">
+                    <Settings className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                    <div className="text-white font-medium">Settings</div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link to="/help">
+                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <CardContent className="p-6 text-center">
+                    <HelpCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                    <div className="text-white font-medium">Help</div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Scroll indicator */}
