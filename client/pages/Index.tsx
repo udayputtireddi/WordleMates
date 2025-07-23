@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { GameController2, Users, TrendingUp, Settings, HelpCircle, Menu, User } from "lucide-react";
+import { GameController2, Users, TrendingUp, Settings, HelpCircle, Menu, User, Trophy } from "lucide-react";
 
 export default function Index() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
