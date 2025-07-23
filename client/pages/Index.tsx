@@ -162,7 +162,7 @@ export default function Index() {
               </Dialog>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
               <Link to="/game">
                 <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
@@ -177,6 +177,15 @@ export default function Index() {
                   <CardContent className="p-6 text-center">
                     <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-2" />
                     <div className="text-white font-medium">Stats</div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link to="/leaderboard">
+                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <CardContent className="p-6 text-center">
+                    <Trophy className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
+                    <div className="text-white font-medium">Leaderboard</div>
                   </CardContent>
                 </Card>
               </Link>
