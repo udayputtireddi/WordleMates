@@ -11,6 +11,7 @@ export default function Navigation() {
   const location = useLocation();
 
   const menuItems = [
+    { path: "/", label: "Home", icon: Home },
     { path: "/game", label: "Play", icon: Gamepad2 },
     { path: "/stats", label: "Statistics", icon: TrendingUp },
     { path: "/leaderboard", label: "Leaderboard", icon: Trophy },
