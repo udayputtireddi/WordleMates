@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import Confetti from "@/components/Confetti";
 
 const WORD_LENGTH = 5;
 const MAX_ATTEMPTS = 6;
