@@ -94,49 +94,8 @@ export default function Index() {
       {/* Floating particles background */}
       <div className="particles"></div>
 
-      {/* Navigation Header - Only show when authenticated */}
-      {isAuthenticated && (
-        <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-          <div className="flex items-center justify-between p-6">
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 glass-button">
-                <Menu className="w-6 h-6" />
-              </Button>
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
-                  alt="WordleMates"
-                  className="w-10 h-10 logo-glow animate-rotate-3d"
-                />
-                <h1 className="text-2xl font-bold gradient-text">WordleMates</h1>
-              </div>
-            </div>
-
-            <nav className="hidden md:flex items-center gap-8">
-              <Link to="/game" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
-                Play
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
-              </Link>
-              <Link to="/stats" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
-                Stats
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
-              </Link>
-              <Link to="/settings" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
-                Settings
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
-              </Link>
-              <Link to="/help" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
-                Help
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            </nav>
-
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 glass-button">
-              <User className="w-6 h-6" />
-            </Button>
-          </div>
-        </header>
-      )}
+      {/* Navigation - Use the shared Navigation component when authenticated */}
+      {isAuthenticated && <Navigation />}
 
       {/* Hero Section */}
       <div className="min-h-screen flex flex-col items-center justify-center px-6 relative">
