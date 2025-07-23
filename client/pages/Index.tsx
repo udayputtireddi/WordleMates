@@ -27,15 +27,15 @@ export default function Index() {
   const GameTile = ({ letter, status }: { letter: string; status: 'correct' | 'present' | 'absent' }) => {
     const getStatusColor = () => {
       switch (status) {
-        case 'correct': return 'bg-wordle-green border-wordle-green text-white';
-        case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white';
+        case 'correct': return 'bg-wordle-green border-wordle-green text-white neon-glow animate-pulse-glow';
+        case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white neon-glow animate-pulse-glow';
         case 'absent': return 'bg-wordle-gray border-wordle-gray text-white';
         default: return 'bg-wordle-tile-empty border-wordle-tile-border text-foreground';
       }
     };
 
     return (
-      <div className={`w-12 h-12 border-2 flex items-center justify-center font-bold text-lg ${getStatusColor()}`}>
+      <div className={`w-12 h-12 border-2 flex items-center justify-center font-bold text-lg transition-all duration-300 hover:scale-110 cursor-default ${getStatusColor()}`}>
         {letter}
       </div>
     );
