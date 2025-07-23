@@ -225,7 +225,10 @@ export default function Game() {
   }, [handleKeyPress]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden scanline-effect">
+      {/* Cyber grid background */}
+      <div className="absolute inset-0 cyber-grid opacity-20"></div>
+
       <Navigation />
       <Confetti active={showConfetti} onComplete={() => setShowConfetti(false)} />
 
