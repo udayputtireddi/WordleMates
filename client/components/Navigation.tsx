@@ -59,11 +59,11 @@ export default function Navigation() {
                         onClick={() => setIsMenuOpen(false)}
                         className={`flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-300 hover:scale-105 group animate-stagger-${index + 1} ${
                           isActive(item.path)
-                            ? "glass-button border-purple-400/50 text-white shadow-lg shadow-purple-500/20"
+                            ? "glass-button border-sky-400/50 text-white shadow-lg shadow-sky-500/20"
                             : "text-gray-300 hover:bg-white/10 hover:text-white"
                         }`}
                       >
-                        <Icon className={`w-6 h-6 transition-all duration-300 ${isActive(item.path) ? 'text-purple-400' : 'group-hover:text-purple-400'}`} />
+                        <Icon className={`w-6 h-6 transition-all duration-300 ${isActive(item.path) ? 'text-sky-400' : 'group-hover:text-sky-400'}`} />
                         <span className="font-medium">{item.label}</span>
                       </Link>
                     );
@@ -107,7 +107,7 @@ export default function Navigation() {
               }`}
             >
               {item.label}
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300 ${
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-sky-400 to-blue-400 transition-all duration-300 ${
                 isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'
               }`}></span>
             </Link>
@@ -131,7 +131,7 @@ export default function Navigation() {
               </DialogHeader>
               <div className="space-y-6">
                 <div className="flex items-center gap-4 p-6 glass-card rounded-xl border border-white/20">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl relative">
+                  <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl relative">
                     P
                     <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                       <Crown className="w-3 h-3 text-white" />
@@ -163,7 +163,7 @@ export default function Navigation() {
                   <div className="glass-card p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400">Current Streak:</span>
-                      <span className="text-purple-400 font-bold text-lg">5 🔥</span>
+                      <span className="text-sky-400 font-bold text-lg">5 🔥</span>
                     </div>
                   </div>
                 </div>
