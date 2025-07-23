@@ -45,9 +45,9 @@ export default function Settings() {
                   Any revealed hints must be used in subsequent guesses
                 </div>
               </div>
-              <Switch 
-                checked={hardMode} 
-                onCheckedChange={setHardMode}
+              <Switch
+                checked={settings.hardMode}
+                onCheckedChange={(checked) => updateSetting('hardMode', checked)}
                 className="data-[state=checked]:bg-green-600"
               />
             </div>
@@ -59,9 +59,9 @@ export default function Settings() {
                   Show celebration animation when you win
                 </div>
               </div>
-              <Switch 
-                checked={confettiMode} 
-                onCheckedChange={setConfettiMode}
+              <Switch
+                checked={settings.confettiMode}
+                onCheckedChange={(checked) => updateSetting('confettiMode', checked)}
                 className="data-[state=checked]:bg-green-600"
               />
             </div>
@@ -73,9 +73,9 @@ export default function Settings() {
                   Play sounds for game interactions
                 </div>
               </div>
-              <Switch 
-                checked={soundEffects} 
-                onCheckedChange={setSoundEffects}
+              <Switch
+                checked={settings.soundEffects}
+                onCheckedChange={(checked) => updateSetting('soundEffects', checked)}
                 className="data-[state=checked]:bg-green-600"
               />
             </div>
