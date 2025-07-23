@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { GameController2, Users, TrendingUp, Settings, HelpCircle, Menu, User, Trophy } from "lucide-react";
+import { Gamepad2, Users, TrendingUp, Settings, HelpCircle, Menu, User, Trophy } from "lucide-react";
 
 export default function Index() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -166,7 +166,7 @@ export default function Index() {
               <Link to="/game">
                 <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <GameController2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                    <Gamepad2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
                     <div className="text-white font-medium">Play</div>
                   </CardContent>
                 </Card>
@@ -229,7 +229,7 @@ export default function Index() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105">
               <CardContent className="p-6 text-center">
-                <GameController2 className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <Gamepad2 className="w-12 h-12 text-green-400 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2 text-white">Play Solo</h3>
                 <p className="text-gray-300">Master your skills with daily challenges and unlimited practice modes.</p>
               </CardContent>
