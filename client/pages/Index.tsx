@@ -200,37 +200,37 @@ export default function Index() {
               </Link>
 
               <Link to="/stats">
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
                   <CardContent className="p-6 text-center">
-                    <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <div className="text-white font-medium">Stats</div>
+                    <TrendingUp className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <div className="text-foreground font-medium">Stats</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/leaderboard">
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
                   <CardContent className="p-6 text-center">
-                    <Trophy className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
-                    <div className="text-white font-medium">Leaderboard</div>
+                    <Trophy className="w-8 h-8 text-wordle-yellow mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <div className="text-foreground font-medium">Leaderboard</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/settings">
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
                   <CardContent className="p-6 text-center">
-                    <Settings className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <div className="text-white font-medium">Settings</div>
+                    <Settings className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <div className="text-foreground font-medium">Settings</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/help">
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
                   <CardContent className="p-6 text-center">
-                    <HelpCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <div className="text-white font-medium">Help</div>
+                    <HelpCircle className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <div className="text-foreground font-medium">Help</div>
                   </CardContent>
                 </Card>
               </Link>
