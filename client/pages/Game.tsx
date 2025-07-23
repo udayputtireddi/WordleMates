@@ -72,6 +72,7 @@ const KeyboardKey = ({
 
 export default function Game() {
   const { settings } = useSettings();
+  const { toast } = useToast();
   const [grid, setGrid] = useState<Tile[][]>(() =>
     Array(MAX_ATTEMPTS).fill(null).map(() =>
       Array(WORD_LENGTH).fill(null).map(() => ({ letter: '', status: 'empty' as TileStatus }))
