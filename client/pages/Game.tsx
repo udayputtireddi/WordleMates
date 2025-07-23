@@ -232,11 +232,11 @@ export default function Game() {
       <Confetti active={showConfetti} onComplete={() => setShowConfetti(false)} />
 
       {/* Game Container */}
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4 relative z-10">
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4">
         {/* Game Status */}
         {gameStatus !== 'playing' && (
-          <div className="mb-6 text-center holographic p-6 rounded-lg neon-glow">
-            <h2 className="text-3xl font-bold mb-2 gradient-text">
+          <div className="mb-6 text-center bg-card p-6 rounded-lg border">
+            <h2 className="text-3xl font-bold mb-2">
               {gameStatus === 'won' ? '🎉 Congratulations!' : '😅 Game Over'}
             </h2>
             <p className="text-xl text-muted-foreground">
