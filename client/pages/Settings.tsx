@@ -8,9 +8,7 @@ import Navigation from "@/components/Navigation";
 import { useSettings } from "@/contexts/SettingsContext";
 
 export default function Settings() {
-  const [hardMode, setHardMode] = useState(false);
-  const [confettiMode, setConfettiMode] = useState(true);
-  const [soundEffects, setSoundEffects] = useState(true);
+  const { settings, updateSetting } = useSettings();
 
   const handleResetStats = () => {
     if (confirm("Are you sure you want to reset all your statistics? This action cannot be undone.")) {
