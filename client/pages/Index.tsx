@@ -114,7 +114,7 @@ export default function Index() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="px-8 py-6 text-lg bg-wordle-green hover:bg-wordle-green/90 text-white transition-all duration-300 hover:scale-105 neon-glow animate-pulse-glow">
+                  <Button size="lg" className="px-8 py-6 text-lg bg-wordle-green hover:bg-wordle-green/90 text-white transition-all duration-300 hover:scale-105">
                     Login to Play
                   </Button>
                 </DialogTrigger>
@@ -140,7 +140,7 @@ export default function Index() {
 
               <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-border text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 hover:neon-glow">
+                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-border text-foreground hover:bg-accent transition-all duration-300 hover:scale-105">
                     Sign Up Free
                   </Button>
                 </DialogTrigger>
@@ -171,45 +171,45 @@ export default function Index() {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
               <Link to="/game">
-                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
+                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <Gamepad2 className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <Gamepad2 className="w-8 h-8 text-wordle-green mx-auto mb-2" />
                     <div className="text-foreground font-medium">Play</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/stats">
-                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
+                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <TrendingUp className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <TrendingUp className="w-8 h-8 text-wordle-green mx-auto mb-2" />
                     <div className="text-foreground font-medium">Stats</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/leaderboard">
-                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
+                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <Trophy className="w-8 h-8 text-wordle-yellow mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <Trophy className="w-8 h-8 text-wordle-yellow mx-auto mb-2" />
                     <div className="text-foreground font-medium">Leaderboard</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/settings">
-                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
+                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <Settings className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <Settings className="w-8 h-8 text-wordle-green mx-auto mb-2" />
                     <div className="text-foreground font-medium">Settings</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/help">
-                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
+                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <HelpCircle className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <HelpCircle className="w-8 h-8 text-wordle-green mx-auto mb-2" />
                     <div className="text-foreground font-medium">Help</div>
                   </CardContent>
                 </Card>
