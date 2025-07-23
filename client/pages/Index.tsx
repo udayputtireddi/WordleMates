@@ -82,27 +82,17 @@ export default function Index() {
       )}
 
       {/* Hero Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden scanline-effect">
-        {/* Cyber grid background */}
-        <div className="absolute inset-0 cyber-grid opacity-30"></div>
-
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-wordle-green rounded-full animate-pulse opacity-50"></div>
-          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-wordle-yellow rounded-full animate-ping opacity-50"></div>
-          <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-wordle-green rounded-full animate-bounce opacity-30"></div>
-        </div>
-
-        <div className="text-center relative z-10">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <div className="text-center">
           {/* Logo and Title */}
           <div className="mb-8">
-            <div className="flex items-center justify-center gap-4 mb-4 group">
+            <div className="flex items-center justify-center gap-4 mb-4">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
                 alt="WordleMates"
-                className="w-16 h-16 md:w-20 md:h-20 animate-pulse-glow hover:scale-110 transition-all duration-500"
+                className="w-16 h-16 md:w-20 md:h-20 hover:scale-105 transition-all duration-300"
               />
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text hover:scale-105 transition-all duration-500 cursor-default">
+              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
                 WordleMates
               </h1>
             </div>
