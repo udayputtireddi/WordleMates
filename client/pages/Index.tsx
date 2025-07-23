@@ -98,11 +98,11 @@ export default function Index() {
       {isAuthenticated && <Navigation />}
 
       {/* Hero Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+      <div className={`${isAuthenticated ? 'pt-24' : ''} min-h-screen flex flex-col items-center justify-center px-6 relative`}>
         <div className="text-center relative z-10">
           {/* Floating logo with premium effects */}
           <div className="mb-12 relative">
-            <div className="absolute inset-0 morph-blob bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-3xl animate-pulse-glow"></div>
+            <div className="absolute inset-0 morph-blob bg-gradient-to-r from-sky-600/20 to-blue-600/20 blur-3xl animate-pulse-glow"></div>
             <div className="flex items-center justify-center gap-6 mb-8 relative">
               <div className="relative">
                 <img
@@ -110,7 +110,7 @@ export default function Index() {
                   alt="WordleMates"
                   className="w-24 h-24 md:w-32 md:h-32 logo-glow animate-float"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
               </div>
               <h1 className="text-6xl md:text-8xl font-black gradient-text tracking-tight">
                 WordleMates
