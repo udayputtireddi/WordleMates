@@ -200,7 +200,7 @@ export default function Index() {
               <Link to="/game">
                 <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
                   <CardContent className="p-8 text-center">
-                    <Gamepad2 className="w-12 h-12 text-purple-400 mx-auto mb-4 animate-float" />
+                    <Gamepad2 className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
                     <div className="text-white font-bold text-lg">Play</div>
                   </CardContent>
                 </Card>
@@ -209,7 +209,7 @@ export default function Index() {
               <Link to="/stats">
                 <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
                   <CardContent className="p-8 text-center">
-                    <TrendingUp className="w-12 h-12 text-blue-400 mx-auto mb-4 animate-float" />
+                    <TrendingUp className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
                     <div className="text-white font-bold text-lg">Stats</div>
                   </CardContent>
                 </Card>
@@ -227,7 +227,7 @@ export default function Index() {
               <Link to="/settings">
                 <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
                   <CardContent className="p-8 text-center">
-                    <Settings className="w-12 h-12 text-green-400 mx-auto mb-4 animate-float" />
+                    <Settings className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
                     <div className="text-white font-bold text-lg">Settings</div>
                   </CardContent>
                 </Card>
@@ -236,7 +236,7 @@ export default function Index() {
               <Link to="/help">
                 <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
                   <CardContent className="p-8 text-center">
-                    <HelpCircle className="w-12 h-12 text-pink-400 mx-auto mb-4 animate-float" />
+                    <HelpCircle className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
                     <div className="text-white font-bold text-lg">Help</div>
                   </CardContent>
                 </Card>
@@ -247,8 +247,8 @@ export default function Index() {
 
         {/* Scroll indicator with premium styling */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-8 h-16 glass border-2 border-purple-400/50 rounded-full flex justify-center animate-float">
-            <div className="w-2 h-6 bg-gradient-to-b from-purple-400 to-blue-400 rounded-full mt-3 animate-pulse"></div>
+          <div className="w-8 h-16 glass border-2 border-sky-400/50 rounded-full flex justify-center animate-float">
+            <div className="w-2 h-6 bg-gradient-to-b from-sky-400 to-blue-400 rounded-full mt-3 animate-pulse"></div>
           </div>
         </div>
       </div>
