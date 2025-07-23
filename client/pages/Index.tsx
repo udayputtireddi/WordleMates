@@ -96,22 +96,12 @@ export default function Index() {
                 WordleMates
               </h1>
             </div>
-            <div className="flex justify-center gap-1 mb-6 group">
-              <div className="animate-float" style={{animationDelay: '0s'}}>
-                <GameTile letter="W" status="correct" />
-              </div>
-              <div className="animate-float" style={{animationDelay: '0.2s'}}>
-                <GameTile letter="O" status="present" />
-              </div>
-              <div className="animate-float" style={{animationDelay: '0.4s'}}>
-                <GameTile letter="R" status="absent" />
-              </div>
-              <div className="animate-float" style={{animationDelay: '0.6s'}}>
-                <GameTile letter="D" status="correct" />
-              </div>
-              <div className="animate-float" style={{animationDelay: '0.8s'}}>
-                <GameTile letter="S" status="present" />
-              </div>
+            <div className="flex justify-center gap-1 mb-6">
+              <GameTile letter="W" status="correct" />
+              <GameTile letter="O" status="present" />
+              <GameTile letter="R" status="absent" />
+              <GameTile letter="D" status="correct" />
+              <GameTile letter="S" status="present" />
             </div>
           </div>
 
