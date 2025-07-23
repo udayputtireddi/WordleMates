@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Gamepad2, Users, TrendingUp, Settings, HelpCircle, Menu, User, Trophy } from "lucide-react";
+import { Gamepad2, Users, TrendingUp, Settings, HelpCircle, Menu, User, Trophy, Sparkles, Zap, Crown } from "lucide-react";
 
 export default function Index() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,114 +24,181 @@ export default function Index() {
     setIsSignupOpen(false);
   };
 
-  const GameTile = ({ letter, status }: { letter: string; status: 'correct' | 'present' | 'absent' }) => {
-    const getStatusColor = () => {
+  // Create floating particles
+  useEffect(() => {
+    const createParticle = () => {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      
+      const particles = document.querySelector('.particles');
+      if (particles) {
+        particles.appendChild(particle);
+        
+        setTimeout(() => {
+          particle.remove();
+        }, 30000);
+      }
+    };
+
+    const interval = setInterval(createParticle, 300);
+    
+    // Create initial particles
+    for (let i = 0; i < 15; i++) {
+      setTimeout(createParticle, i * 200);
+    }
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const GameTile = ({ letter, status, delay = 0 }: { letter: string; status: 'correct' | 'present' | 'absent'; delay?: number }) => {
+    const getStatusStyle = () => {
       switch (status) {
-        case 'correct': return 'bg-wordle-green border-wordle-green text-white';
-        case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white';
-        case 'absent': return 'bg-wordle-gray border-wordle-gray text-white';
-        default: return 'bg-wordle-tile-empty border-wordle-tile-border text-foreground';
+        case 'correct': 
+          return 'bg-gradient-to-br from-emerald-400 to-green-600 border-emerald-300 text-white shadow-lg shadow-emerald-500/30';
+        case 'present': 
+          return 'bg-gradient-to-br from-amber-400 to-yellow-600 border-amber-300 text-white shadow-lg shadow-amber-500/30';
+        case 'absent': 
+          return 'bg-gradient-to-br from-gray-600 to-gray-800 border-gray-500 text-white shadow-lg shadow-gray-500/30';
+        default: 
+          return 'glass border-white/20 text-white shadow-lg';
       }
     };
 
     return (
-      <div className={`w-12 h-12 border-2 flex items-center justify-center font-bold text-lg transition-all duration-300 hover:scale-105 ${getStatusColor()}`}>
+      <div 
+        className={`w-14 h-14 border-2 flex items-center justify-center font-bold text-xl tile-3d ${getStatusStyle()} animate-stagger-${delay + 1}`}
+        style={{ animationDelay: `${delay * 0.1}s` }}
+      >
         {letter}
       </div>
     );
   };
 
+  const FeatureCard = ({ icon: Icon, title, description, delay = 0 }) => (
+    <Card className={`glass-card hover:scale-105 transition-all duration-700 animate-stagger-${delay + 1} group`}>
+      <CardContent className="p-8 text-center relative overflow-hidden">
+        <div className="absolute inset-0 holographic opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="relative z-10">
+          <Icon className="w-16 h-16 text-purple-400 mx-auto mb-6 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
+          <h3 className="text-2xl font-bold mb-4 text-white">{title}</h3>
+          <p className="text-gray-300 leading-relaxed">{description}</p>
+        </div>
+      </CardContent>
+    </Card>
+  );
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-black text-white relative">
+      {/* Floating particles background */}
+      <div className="particles"></div>
+
       {/* Navigation Header - Only show when authenticated */}
       {isAuthenticated && (
-        <header className="flex items-center justify-between p-4 border-b border-border">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent">
-              <Menu className="w-6 h-6" />
-            </Button>
-            <div className="flex items-center gap-2">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
-                alt="WordleMates"
-                className="w-8 h-8"
-              />
-              <h1 className="text-xl font-bold text-foreground">WordleMates</h1>
+        <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+          <div className="flex items-center justify-between p-6">
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 glass-button">
+                <Menu className="w-6 h-6" />
+              </Button>
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
+                  alt="WordleMates"
+                  className="w-10 h-10 logo-glow animate-rotate-3d"
+                />
+                <h1 className="text-2xl font-bold gradient-text">WordleMates</h1>
+              </div>
             </div>
+
+            <nav className="hidden md:flex items-center gap-8">
+              <Link to="/game" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
+                Play
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link to="/stats" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
+                Stats
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link to="/settings" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
+                Settings
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link to="/help" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 relative group">
+                Help
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+            </nav>
+
+            <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 glass-button">
+              <User className="w-6 h-6" />
+            </Button>
           </div>
-
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/game" className="text-muted-foreground hover:text-foreground transition-colors">
-              Play
-            </Link>
-            <Link to="/stats" className="text-muted-foreground hover:text-foreground transition-colors">
-              Stats
-            </Link>
-            <Link to="/settings" className="text-muted-foreground hover:text-foreground transition-colors">
-              Settings
-            </Link>
-            <Link to="/help" className="text-muted-foreground hover:text-foreground transition-colors">
-              Help
-            </Link>
-          </nav>
-
-          <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent">
-            <User className="w-6 h-6" />
-          </Button>
         </header>
       )}
 
       {/* Hero Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="text-center">
-          {/* Logo and Title */}
-          <div className="mb-8">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
-                alt="WordleMates"
-                className="w-16 h-16 md:w-20 md:h-20 hover:scale-105 transition-all duration-300"
-              />
-              <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        <div className="text-center relative z-10">
+          {/* Floating logo with premium effects */}
+          <div className="mb-12 relative">
+            <div className="absolute inset-0 morph-blob bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-3xl animate-pulse-glow"></div>
+            <div className="flex items-center justify-center gap-6 mb-8 relative">
+              <div className="relative">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
+                  alt="WordleMates"
+                  className="w-24 h-24 md:w-32 md:h-32 logo-glow animate-float"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+              </div>
+              <h1 className="text-6xl md:text-8xl font-black gradient-text tracking-tight">
                 WordleMates
               </h1>
             </div>
-            <div className="flex justify-center gap-1 mb-6">
-              <GameTile letter="W" status="correct" />
-              <GameTile letter="O" status="present" />
-              <GameTile letter="R" status="absent" />
-              <GameTile letter="D" status="correct" />
-              <GameTile letter="S" status="present" />
+            
+            {/* Premium word display */}
+            <div className="flex justify-center gap-2 mb-8">
+              <GameTile letter="W" status="correct" delay={0} />
+              <GameTile letter="O" status="present" delay={1} />
+              <GameTile letter="R" status="absent" delay={2} />
+              <GameTile letter="D" status="correct" delay={3} />
+              <GameTile letter="S" status="present" delay={4} />
             </div>
           </div>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Challenge your friends in the ultimate word game experience.
-            Play together, compete, and master the art of words.
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Experience the <span className="gradient-text font-semibold">ultimate word game</span> with friends.
+            Challenge, compete, and conquer with stunning visuals and smooth gameplay.
           </p>
 
           {!isAuthenticated ? (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="px-8 py-6 text-lg bg-wordle-green hover:bg-wordle-green/90 text-white transition-all duration-300 hover:scale-105">
-                    Login to Play
+                  <Button size="lg" className="px-12 py-8 text-xl glass-button hover:scale-110 transition-all duration-500 relative group overflow-hidden">
+                    <span className="relative z-10 flex items-center gap-3">
+                      <Sparkles className="w-6 h-6" />
+                      Enter the Game
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-card border-border">
+                <DialogContent className="sm:max-w-md glass border-white/20">
                   <DialogHeader>
-                    <DialogTitle className="text-foreground">Welcome Back!</DialogTitle>
+                    <DialogTitle className="text-white text-2xl gradient-text">Welcome Back!</DialogTitle>
                   </DialogHeader>
-                  <form onSubmit={handleLogin} className="space-y-4">
+                  <form onSubmit={handleLogin} className="space-y-6">
                     <div>
-                      <Label htmlFor="email" className="text-foreground">Email</Label>
-                      <Input id="email" type="email" required className="bg-input border-border text-foreground" />
+                      <Label htmlFor="email" className="text-white text-lg">Email</Label>
+                      <Input id="email" type="email" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
                     </div>
                     <div>
-                      <Label htmlFor="password" className="text-foreground">Password</Label>
-                      <Input id="password" type="password" required className="bg-input border-border text-foreground" />
+                      <Label htmlFor="password" className="text-white text-lg">Password</Label>
+                      <Input id="password" type="password" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
                     </div>
-                    <Button type="submit" className="w-full bg-wordle-green hover:bg-wordle-green/90 text-white">
+                    <Button type="submit" className="w-full glass-button py-4 text-lg">
                       Login
                     </Button>
                   </form>
@@ -140,28 +207,29 @@ export default function Index() {
 
               <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-border text-foreground hover:bg-accent transition-all duration-300 hover:scale-105">
-                    Sign Up Free
+                  <Button variant="outline" size="lg" className="px-12 py-8 text-xl glass border-white/30 hover:bg-white/10 transition-all duration-500 hover:scale-110">
+                    <Crown className="w-6 h-6 mr-3" />
+                    Join Premium
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-card border-border">
+                <DialogContent className="sm:max-w-md glass border-white/20">
                   <DialogHeader>
-                    <DialogTitle className="text-foreground">Join WordleMates!</DialogTitle>
+                    <DialogTitle className="text-white text-2xl gradient-text">Join WordleMates!</DialogTitle>
                   </DialogHeader>
-                  <form onSubmit={handleSignup} className="space-y-4">
+                  <form onSubmit={handleSignup} className="space-y-6">
                     <div>
-                      <Label htmlFor="username" className="text-foreground">Username</Label>
-                      <Input id="username" required className="bg-input border-border text-foreground" />
+                      <Label htmlFor="username" className="text-white text-lg">Username</Label>
+                      <Input id="username" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
                     </div>
                     <div>
-                      <Label htmlFor="signup-email" className="text-foreground">Email</Label>
-                      <Input id="signup-email" type="email" required className="bg-input border-border text-foreground" />
+                      <Label htmlFor="signup-email" className="text-white text-lg">Email</Label>
+                      <Input id="signup-email" type="email" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
                     </div>
                     <div>
-                      <Label htmlFor="signup-password" className="text-foreground">Password</Label>
-                      <Input id="signup-password" type="password" required className="bg-input border-border text-foreground" />
+                      <Label htmlFor="signup-password" className="text-white text-lg">Password</Label>
+                      <Input id="signup-password" type="password" required className="glass border-white/20 text-white placeholder:text-gray-400 text-lg py-3" />
                     </div>
-                    <Button type="submit" className="w-full bg-wordle-green hover:bg-wordle-green/90 text-white">
+                    <Button type="submit" className="w-full glass-button py-4 text-lg">
                       Create Account
                     </Button>
                   </form>
@@ -169,48 +237,48 @@ export default function Index() {
               </Dialog>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
               <Link to="/game">
-                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <CardContent className="p-6 text-center">
-                    <Gamepad2 className="w-8 h-8 text-wordle-green mx-auto mb-2" />
-                    <div className="text-foreground font-medium">Play</div>
+                <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
+                  <CardContent className="p-8 text-center">
+                    <Gamepad2 className="w-12 h-12 text-purple-400 mx-auto mb-4 animate-float" />
+                    <div className="text-white font-bold text-lg">Play</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/stats">
-                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <CardContent className="p-6 text-center">
-                    <TrendingUp className="w-8 h-8 text-wordle-green mx-auto mb-2" />
-                    <div className="text-foreground font-medium">Stats</div>
+                <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
+                  <CardContent className="p-8 text-center">
+                    <TrendingUp className="w-12 h-12 text-blue-400 mx-auto mb-4 animate-float" />
+                    <div className="text-white font-bold text-lg">Stats</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/leaderboard">
-                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <CardContent className="p-6 text-center">
-                    <Trophy className="w-8 h-8 text-wordle-yellow mx-auto mb-2" />
-                    <div className="text-foreground font-medium">Leaderboard</div>
+                <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
+                  <CardContent className="p-8 text-center">
+                    <Trophy className="w-12 h-12 text-yellow-400 mx-auto mb-4 animate-float" />
+                    <div className="text-white font-bold text-lg">Leaderboard</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/settings">
-                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <CardContent className="p-6 text-center">
-                    <Settings className="w-8 h-8 text-wordle-green mx-auto mb-2" />
-                    <div className="text-foreground font-medium">Settings</div>
+                <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
+                  <CardContent className="p-8 text-center">
+                    <Settings className="w-12 h-12 text-green-400 mx-auto mb-4 animate-float" />
+                    <div className="text-white font-bold text-lg">Settings</div>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link to="/help">
-                <Card className="bg-card border-border hover:border-wordle-green transition-all duration-300 hover:scale-105 cursor-pointer">
-                  <CardContent className="p-6 text-center">
-                    <HelpCircle className="w-8 h-8 text-wordle-green mx-auto mb-2" />
-                    <div className="text-foreground font-medium">Help</div>
+                <Card className="glass-card hover:scale-110 transition-all duration-500 cursor-pointer group">
+                  <CardContent className="p-8 text-center">
+                    <HelpCircle className="w-12 h-12 text-pink-400 mx-auto mb-4 animate-float" />
+                    <div className="text-white font-bold text-lg">Help</div>
                   </CardContent>
                 </Card>
               </Link>
@@ -218,115 +286,123 @@ export default function Index() {
           )}
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-green-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-green-400 rounded-full mt-2 animate-pulse"></div>
+        {/* Scroll indicator with premium styling */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-8 h-16 glass border-2 border-purple-400/50 rounded-full flex justify-center animate-float">
+            <div className="w-2 h-6 bg-gradient-to-b from-purple-400 to-blue-400 rounded-full mt-3 animate-pulse"></div>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="py-20 px-4" id="features">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
-            Why Choose WordleMates?
-          </h2>
+      <div className="py-32 px-6 relative" id="features">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-black gradient-text mb-6">
+              Premium Features
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Discover what makes WordleMates the most advanced word game experience
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105">
-              <CardContent className="p-6 text-center">
-                <Gamepad2 className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Play Solo</h3>
-                <p className="text-gray-300">Master your skills with daily challenges and unlimited practice modes.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105">
-              <CardContent className="p-6 text-center">
-                <Users className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Multiplayer</h3>
-                <p className="text-gray-300">Challenge friends in real-time or create private rooms for groups.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105">
-              <CardContent className="p-6 text-center">
-                <TrendingUp className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Track Progress</h3>
-                <p className="text-gray-300">Detailed statistics, streaks, and performance analytics.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105">
-              <CardContent className="p-6 text-center">
-                <Settings className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-white">Customizable</h3>
-                <p className="text-gray-300">Hard mode, themes, notifications, and personalized settings.</p>
-              </CardContent>
-            </Card>
+            <FeatureCard
+              icon={Gamepad2}
+              title="Solo Mastery"
+              description="Perfect your skills with unlimited practice modes, daily challenges, and progressive difficulty levels."
+              delay={0}
+            />
+            <FeatureCard
+              icon={Users}
+              title="Multiplayer Arena"
+              description="Real-time battles with friends, tournament modes, and private rooms for exclusive competitions."
+              delay={1}
+            />
+            <FeatureCard
+              icon={TrendingUp}
+              title="Advanced Analytics"
+              description="Detailed performance insights, streak tracking, and AI-powered improvement suggestions."
+              delay={2}
+            />
+            <FeatureCard
+              icon={Zap}
+              title="Premium Experience"
+              description="Stunning animations, custom themes, priority support, and exclusive game modes."
+              delay={3}
+            />
           </div>
         </div>
       </div>
 
       {/* Game Preview Section */}
-      <div className="py-20 px-4 bg-gray-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">
-            Experience the Game
+      <div className="py-32 px-6 relative">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-5xl md:text-7xl font-black gradient-text mb-8">
+            See It In Action
           </h2>
-          <p className="text-xl text-gray-300 mb-12">
-            Six chances to guess the word. Green means correct letter and position, 
-            yellow means correct letter but wrong position.
+          <p className="text-xl text-gray-300 mb-16 max-w-3xl mx-auto">
+            Six chances to find the perfect word. Green tiles mark perfect matches, 
+            yellow shows correct letters in wrong positions.
           </p>
 
-          <div className="grid gap-3 max-w-xs mx-auto mb-8">
-            <div className="flex gap-2 justify-center">
-              <GameTile letter="P" status="absent" />
-              <GameTile letter="L" status="present" />
-              <GameTile letter="A" status="correct" />
-              <GameTile letter="N" status="absent" />
-              <GameTile letter="T" status="absent" />
-            </div>
-            <div className="flex gap-2 justify-center">
-              <GameTile letter="S" status="absent" />
-              <GameTile letter="L" status="correct" />
-              <GameTile letter="A" status="correct" />
-              <GameTile letter="M" status="absent" />
-              <GameTile letter="P" status="absent" />
-            </div>
-            <div className="flex gap-2 justify-center">
-              <GameTile letter="B" status="correct" />
-              <GameTile letter="L" status="correct" />
-              <GameTile letter="A" status="correct" />
-              <GameTile letter="C" status="correct" />
-              <GameTile letter="K" status="correct" />
+          <div className="glass-card p-12 rounded-3xl mb-12">
+            <div className="grid gap-4 max-w-sm mx-auto">
+              <div className="flex gap-3 justify-center">
+                <GameTile letter="P" status="absent" delay={0} />
+                <GameTile letter="L" status="present" delay={1} />
+                <GameTile letter="A" status="correct" delay={2} />
+                <GameTile letter="N" status="absent" delay={3} />
+                <GameTile letter="T" status="absent" delay={4} />
+              </div>
+              <div className="flex gap-3 justify-center">
+                <GameTile letter="S" status="absent" delay={0} />
+                <GameTile letter="L" status="correct" delay={1} />
+                <GameTile letter="A" status="correct" delay={2} />
+                <GameTile letter="M" status="absent" delay={3} />
+                <GameTile letter="P" status="absent" delay={4} />
+              </div>
+              <div className="flex gap-3 justify-center">
+                <GameTile letter="B" status="correct" delay={0} />
+                <GameTile letter="L" status="correct" delay={1} />
+                <GameTile letter="A" status="correct" delay={2} />
+                <GameTile letter="C" status="correct" delay={3} />
+                <GameTile letter="K" status="correct" delay={4} />
+              </div>
             </div>
           </div>
 
           {!isAuthenticated && (
             <Button 
               size="lg" 
-              className="px-8 py-6 text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 hover:scale-105"
+              className="px-12 py-8 text-xl glass-button hover:scale-110 transition-all duration-500"
               onClick={() => setIsLoginOpen(true)}
             >
-              Start Playing Now
+              <Sparkles className="w-6 h-6 mr-3" />
+              Start Your Journey
             </Button>
           )}
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-gray-700">
+      <footer className="py-16 px-6 border-t border-white/10 glass">
         <div className="max-w-6xl mx-auto text-center">
-          <h3 className="text-2xl font-bold gradient-text mb-4">🧩 WordleMates</h3>
-          <p className="text-gray-400 mb-4">The ultimate word game experience</p>
-          <div className="flex justify-center gap-6 text-sm text-gray-500">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
+              alt="WordleMates"
+              className="w-12 h-12 logo-glow"
+            />
+            <h3 className="text-3xl font-bold gradient-text">WordleMates</h3>
+          </div>
+          <p className="text-gray-400 mb-6 text-lg">The ultimate premium word game experience</p>
+          <div className="flex justify-center gap-8 text-gray-500">
             <span>© 2024 WordleMates</span>
             <span>•</span>
-            <span>Privacy Policy</span>
+            <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
             <span>•</span>
-            <span>Terms of Service</span>
+            <span className="hover:text-white transition-colors cursor-pointer">Terms of Service</span>
           </div>
         </div>
       </footer>
