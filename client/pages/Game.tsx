@@ -52,19 +52,19 @@ const KeyboardKey = ({
   isSpecial?: boolean;
 }) => {
   const getKeyColor = () => {
-    if (isSpecial) return 'bg-muted hover:bg-muted/80 text-foreground hover:neon-glow';
+    if (isSpecial) return 'bg-muted hover:bg-muted/80 text-foreground';
     switch (status) {
-      case 'correct': return 'bg-wordle-green text-white neon-glow';
-      case 'present': return 'bg-wordle-yellow text-white neon-glow';
+      case 'correct': return 'bg-wordle-green text-white';
+      case 'present': return 'bg-wordle-yellow text-white';
       case 'absent': return 'bg-wordle-gray text-white';
-      default: return 'bg-muted hover:bg-muted/80 text-foreground hover:neon-glow';
+      default: return 'bg-muted hover:bg-muted/80 text-foreground';
     }
   };
 
   return (
     <Button
       onClick={onClick}
-      className={`${getKeyColor()} font-semibold transition-all duration-300 rounded hover:scale-105 active:scale-95 ${
+      className={`${getKeyColor()} font-semibold transition-all duration-200 rounded hover:scale-105 active:scale-95 ${
         isSpecial ? 'px-4 py-6 text-sm' : 'p-4 min-w-[44px] h-14'
       }`}
       variant="secondary"
