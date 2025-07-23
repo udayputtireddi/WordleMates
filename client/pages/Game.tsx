@@ -25,12 +25,14 @@ const GameTile = ({ tile, isActive }: { tile: Tile; isActive: boolean }) => {
       case 'correct': return 'bg-wordle-green border-wordle-green text-white';
       case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white';
       case 'absent': return 'bg-wordle-gray border-wordle-gray text-white';
-      default: return isActive ? 'bg-gray-700 border-gray-500 text-white' : 'bg-gray-800 border-gray-600 text-gray-300';
+      default: return tile.letter
+        ? 'bg-wordle-tile-empty border-wordle-tile-border text-foreground border-2'
+        : 'bg-wordle-tile-empty border-wordle-tile-border text-foreground';
     }
   };
 
   return (
-    <div className={`w-14 h-14 border-2 flex items-center justify-center font-bold text-2xl rounded transition-all duration-300 ${getStatusColor()}`}>
+    <div className={`w-14 h-14 border-2 flex items-center justify-center font-bold text-2xl transition-all duration-300 ${getStatusColor()}`}>
       {tile.letter}
     </div>
   );
