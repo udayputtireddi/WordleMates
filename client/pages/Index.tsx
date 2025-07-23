@@ -81,7 +81,7 @@ export default function Index() {
       <CardContent className="p-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 holographic opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="relative z-10">
-          <Icon className="w-16 h-16 text-purple-400 mx-auto mb-6 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
+          <Icon className="w-16 h-16 text-sky-400 mx-auto mb-6 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
           <h3 className="text-2xl font-bold mb-4 text-white">{title}</h3>
           <p className="text-gray-300 leading-relaxed">{description}</p>
         </div>
