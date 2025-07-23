@@ -114,24 +114,24 @@ export default function Index() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="px-8 py-6 text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 hover:scale-105">
+                  <Button size="lg" className="px-8 py-6 text-lg bg-wordle-green hover:bg-wordle-green/90 text-white transition-all duration-300">
                     Login to Play
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+                <DialogContent className="sm:max-w-md bg-card border-border">
                   <DialogHeader>
-                    <DialogTitle className="text-white">Welcome Back!</DialogTitle>
+                    <DialogTitle className="text-foreground">Welcome Back!</DialogTitle>
                   </DialogHeader>
                   <form onSubmit={handleLogin} className="space-y-4">
                     <div>
-                      <Label htmlFor="email" className="text-gray-300">Email</Label>
-                      <Input id="email" type="email" required className="bg-gray-700 border-gray-600 text-white" />
+                      <Label htmlFor="email" className="text-foreground">Email</Label>
+                      <Input id="email" type="email" required className="bg-input border-border text-foreground" />
                     </div>
                     <div>
-                      <Label htmlFor="password" className="text-gray-300">Password</Label>
-                      <Input id="password" type="password" required className="bg-gray-700 border-gray-600 text-white" />
+                      <Label htmlFor="password" className="text-foreground">Password</Label>
+                      <Input id="password" type="password" required className="bg-input border-border text-foreground" />
                     </div>
-                    <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
+                    <Button type="submit" className="w-full bg-wordle-green hover:bg-wordle-green/90 text-white">
                       Login
                     </Button>
                   </form>
@@ -140,28 +140,28 @@ export default function Index() {
 
               <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-green-600 text-green-400 hover:bg-green-600 hover:text-white transition-all duration-300 hover:scale-105">
+                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-border text-foreground hover:bg-accent transition-all duration-300">
                     Sign Up Free
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+                <DialogContent className="sm:max-w-md bg-card border-border">
                   <DialogHeader>
-                    <DialogTitle className="text-white">Join WordleMates!</DialogTitle>
+                    <DialogTitle className="text-foreground">Join WordleMates!</DialogTitle>
                   </DialogHeader>
                   <form onSubmit={handleSignup} className="space-y-4">
                     <div>
-                      <Label htmlFor="username" className="text-gray-300">Username</Label>
-                      <Input id="username" required className="bg-gray-700 border-gray-600 text-white" />
+                      <Label htmlFor="username" className="text-foreground">Username</Label>
+                      <Input id="username" required className="bg-input border-border text-foreground" />
                     </div>
                     <div>
-                      <Label htmlFor="signup-email" className="text-gray-300">Email</Label>
-                      <Input id="signup-email" type="email" required className="bg-gray-700 border-gray-600 text-white" />
+                      <Label htmlFor="signup-email" className="text-foreground">Email</Label>
+                      <Input id="signup-email" type="email" required className="bg-input border-border text-foreground" />
                     </div>
                     <div>
-                      <Label htmlFor="signup-password" className="text-gray-300">Password</Label>
-                      <Input id="signup-password" type="password" required className="bg-gray-700 border-gray-600 text-white" />
+                      <Label htmlFor="signup-password" className="text-foreground">Password</Label>
+                      <Input id="signup-password" type="password" required className="bg-input border-border text-foreground" />
                     </div>
-                    <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
+                    <Button type="submit" className="w-full bg-wordle-green hover:bg-wordle-green/90 text-white">
                       Create Account
                     </Button>
                   </form>
