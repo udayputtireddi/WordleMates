@@ -160,7 +160,7 @@ export default function Index() {
 
               <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-border text-foreground hover:bg-accent transition-all duration-300">
+                  <Button variant="outline" size="lg" className="px-8 py-6 text-lg border-border text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 hover:neon-glow">
                     Sign Up Free
                   </Button>
                 </DialogTrigger>
