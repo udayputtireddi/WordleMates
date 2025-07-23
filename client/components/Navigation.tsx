@@ -28,25 +28,24 @@ export default function Navigation() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      {/* Left side - Menu and Logo */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
       <div className="flex items-center justify-between p-6">
         <div className="flex items-center gap-4">
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 glass-button transition-all duration-300 hover:scale-110">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="glass border-white/20 text-white w-80 backdrop-blur-xl">
+            <SheetContent side="left" className="bg-black/90 backdrop-blur-lg border-white/20 text-white w-80">
               <div className="flex flex-col h-full">
                 <div className="flex items-center gap-3 mb-8 pt-4">
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
                     alt="WordleMates"
-                    className="w-10 h-10 logo-glow animate-rotate-3d"
+                    className="w-10 h-10"
                   />
-                  <h2 className="text-2xl font-bold gradient-text">WordleMates</h2>
+                  <h2 className="text-2xl font-bold text-white">WordleMates</h2>
                 </div>
                 
                 <nav className="flex-1 space-y-3">
@@ -57,13 +56,13 @@ export default function Navigation() {
                         key={item.path}
                         to={item.path}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-300 hover:scale-105 group animate-stagger-${index + 1} ${
+                        className={`flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-300 hover:scale-105 ${
                           isActive(item.path)
-                            ? "glass-button border-sky-400/50 text-white shadow-lg shadow-sky-500/20"
+                            ? "bg-sky-500/20 border border-sky-400/50 text-white"
                             : "text-gray-300 hover:bg-white/10 hover:text-white"
                         }`}
                       >
-                        <Icon className={`w-6 h-6 transition-all duration-300 ${isActive(item.path) ? 'text-sky-400' : 'group-hover:text-sky-400'}`} />
+                        <Icon className={`w-6 h-6 transition-all duration-300 ${isActive(item.path) ? 'text-sky-400' : 'hover:text-sky-400'}`} />
                         <span className="font-medium">{item.label}</span>
                       </Link>
                     );
@@ -74,7 +73,7 @@ export default function Navigation() {
                   <Button
                     variant="ghost"
                     onClick={handleLogout}
-                    className="flex items-center gap-4 w-full justify-start text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all duration-300 hover:scale-105 px-6 py-4 rounded-xl"
+                    className="flex items-center gap-4 w-full justify-start text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all duration-300 px-6 py-4 rounded-xl"
                   >
                     <LogOut className="w-6 h-6" />
                     <span className="font-medium">Log Out</span>
@@ -84,13 +83,13 @@ export default function Navigation() {
             </SheetContent>
           </Sheet>
           
-          <Link to="/" className="flex items-center gap-3 hover:scale-105 transition-all duration-300 group">
+          <Link to="/" className="flex items-center gap-3 hover:scale-105 transition-all duration-300">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
               alt="WordleMates"
-              className="w-10 h-10 logo-glow animate-rotate-3d"
+              className="w-10 h-10"
             />
-            <h1 className="text-2xl font-bold gradient-text">WordleMates</h1>
+            <h1 className="text-2xl font-bold text-white">WordleMates</h1>
           </Link>
         </div>
 
@@ -118,19 +117,19 @@ export default function Navigation() {
         <div className="relative z-10">
           <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
             <DialogTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 glass-button transition-all duration-300 hover:scale-110">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                 <User className="w-6 h-6" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md glass border-white/20 backdrop-blur-xl">
+            <DialogContent className="sm:max-w-md bg-black/90 backdrop-blur-lg border-white/20">
               <DialogHeader>
-                <DialogTitle className="text-white text-2xl gradient-text flex items-center gap-2">
+                <DialogTitle className="text-white text-2xl flex items-center gap-2">
                   <Crown className="w-6 h-6" />
                   Premium Profile
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-6">
-                <div className="flex items-center gap-4 p-6 glass-card rounded-xl border border-white/20">
+                <div className="flex items-center gap-4 p-6 bg-white/5 rounded-xl border border-white/20">
                   <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl relative">
                     P
                     <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
@@ -148,19 +147,19 @@ export default function Navigation() {
                 </div>
                 
                 <div className="grid gap-4">
-                  <div className="glass-card p-4 rounded-xl border border-white/10">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400">Games Played:</span>
                       <span className="text-white font-bold text-lg">24</span>
                     </div>
                   </div>
-                  <div className="glass-card p-4 rounded-xl border border-white/10">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400">Win Rate:</span>
                       <span className="text-emerald-400 font-bold text-lg">87%</span>
                     </div>
                   </div>
-                  <div className="glass-card p-4 rounded-xl border border-white/10">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/10">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400">Current Streak:</span>
                       <span className="text-sky-400 font-bold text-lg">5 🔥</span>
@@ -170,14 +169,14 @@ export default function Navigation() {
                 
                 <div className="flex gap-3">
                   <Link to="/settings" className="flex-1" onClick={() => setIsProfileOpen(false)}>
-                    <Button variant="ghost" className="w-full glass-button transition-all duration-300 hover:scale-105">
+                    <Button variant="ghost" className="w-full bg-white/10 hover:bg-white/20 transition-all duration-300">
                       Settings
                     </Button>
                   </Link>
                   <Button
                     variant="destructive"
                     onClick={handleLogout}
-                    className="flex-1 bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300 hover:scale-105"
+                    className="flex-1 bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 transition-all duration-300"
                   >
                     Log Out
                   </Button>
