@@ -75,7 +75,7 @@ export default function Settings() {
             <Switch
               checked={settings.hardMode}
               onCheckedChange={(checked) => updateSetting('hardMode', checked)}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
@@ -86,7 +86,7 @@ export default function Settings() {
             <Switch
               checked={settings.darkMode}
               onCheckedChange={(checked) => updateSetting('darkMode', checked)}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
@@ -97,7 +97,7 @@ export default function Settings() {
             <Switch
               checked={settings.highContrast}
               onCheckedChange={(checked) => updateSetting('highContrast', checked)}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
         </SettingCard>
@@ -111,7 +111,7 @@ export default function Settings() {
             <Switch
               checked={settings.soundEffects}
               onCheckedChange={(checked) => updateSetting('soundEffects', checked)}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
@@ -122,7 +122,7 @@ export default function Settings() {
             <Switch
               checked={settings.confettiMode}
               onCheckedChange={(checked) => updateSetting('confettiMode', checked)}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
@@ -133,7 +133,7 @@ export default function Settings() {
             <Switch
               checked={settings.animations || true}
               onCheckedChange={(checked) => updateSetting('animations', checked)}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
         </SettingCard>
@@ -147,7 +147,7 @@ export default function Settings() {
             <Switch
               checked={false}
               onCheckedChange={(checked) => {}}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
 
@@ -158,7 +158,7 @@ export default function Settings() {
             <Switch
               checked={true}
               onCheckedChange={(checked) => {}}
-              className="data-[state=checked]:bg-purple-600"
+              className="data-[state=checked]:bg-sky-600"
             />
           </SettingItem>
         </SettingCard>
