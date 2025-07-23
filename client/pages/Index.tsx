@@ -191,10 +191,10 @@ export default function Index() {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
               <Link to="/game">
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <Card className="holographic hover:neon-glow transition-all duration-300 hover:scale-105 cursor-pointer group">
                   <CardContent className="p-6 text-center">
-                    <Gamepad2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <div className="text-white font-medium">Play</div>
+                    <Gamepad2 className="w-8 h-8 text-wordle-green mx-auto mb-2 group-hover:animate-pulse-glow" />
+                    <div className="text-foreground font-medium">Play</div>
                   </CardContent>
                 </Card>
               </Link>
