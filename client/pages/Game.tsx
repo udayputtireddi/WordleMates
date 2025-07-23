@@ -200,6 +200,7 @@ export default function Game() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       <Navigation />
+      <Confetti active={showConfetti} onComplete={() => setShowConfetti(false)} />
 
       {/* Game Container */}
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4">
