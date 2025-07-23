@@ -86,21 +86,26 @@ export default function Navigation() {
           </SheetContent>
         </Sheet>
         
-        <Link to="/" className="flex items-center gap-2">
-          <h1 className="text-xl font-bold gradient-text">🧩 WordleMates</h1>
+        <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-all duration-300">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
+            alt="WordleMates"
+            className="w-8 h-8 animate-pulse-glow"
+          />
+          <h1 className="text-xl font-bold gradient-text">WordleMates</h1>
         </Link>
       </div>
 
       {/* Center - Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-6">
+      <nav className="hidden md:flex items-center gap-6 relative z-10">
         {menuItems.map((item) => (
           <Link
             key={item.path}
             to={item.path}
-            className={`text-sm font-medium transition-colors ${
+            className={`text-sm font-medium transition-all duration-300 hover:scale-110 px-3 py-2 rounded ${
               isActive(item.path)
-                ? "text-green-400"
-                : "text-gray-300 hover:text-white"
+                ? "text-wordle-green neon-text"
+                : "text-muted-foreground hover:text-foreground hover:neon-glow"
             }`}
           >
             {item.label}
