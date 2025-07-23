@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Menu, User, GameController2, TrendingUp, Settings, HelpCircle, Trophy, LogOut } from "lucide-react";
+import { Menu, User, Gamepad2, TrendingUp, Settings, HelpCircle, Trophy, LogOut } from "lucide-react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +11,7 @@ export default function Navigation() {
   const location = useLocation();
 
   const menuItems = [
-    { path: "/game", label: "Play", icon: GameController2 },
+    { path: "/game", label: "Play", icon: Gamepad2 },
     { path: "/stats", label: "Statistics", icon: TrendingUp },
     { path: "/leaderboard", label: "Leaderboard", icon: Trophy },
     { path: "/settings", label: "Settings", icon: Settings },
