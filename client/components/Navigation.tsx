@@ -15,7 +15,7 @@ export default function Navigation() {
     { path: "/game", label: "Play", icon: Gamepad2 },
     { path: "/stats", label: "Statistics", icon: TrendingUp },
     { path: "/leaderboard", label: "Leaderboard", icon: Trophy },
-    { path: "/settings", label: "Settings", icon: Settings },
+    { path: "/settings", label: "Settings", icon: SettingsIcon },
     { path: "/help", label: "Help", icon: HelpCircle },
   ];
 
