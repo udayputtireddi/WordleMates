@@ -61,7 +61,8 @@ export default {
           green: "hsl(var(--wordle-green))",
           yellow: "hsl(var(--wordle-yellow))",
           gray: "hsl(var(--wordle-gray))",
-          tile: "hsl(var(--wordle-tile))",
+          "tile-empty": "hsl(var(--wordle-tile-empty))",
+          "tile-border": "hsl(var(--wordle-tile-border))",
         },
       },
       borderRadius: {
