@@ -42,7 +42,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Navigation Header - Only show when authenticated */}
       {isAuthenticated && (
         <header className="flex items-center justify-between p-4 border-b border-gray-700">
