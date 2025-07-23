@@ -59,10 +59,10 @@ export default function Navigation() {
                       key={item.path}
                       to={item.path}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 hover:scale-105 ${
                         isActive(item.path)
-                          ? "bg-green-600 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                          ? "bg-wordle-green text-white neon-glow cyber-border"
+                          : "text-muted-foreground hover:bg-accent hover:text-foreground hover:neon-glow"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
