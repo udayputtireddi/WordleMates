@@ -235,15 +235,15 @@ export default function Game() {
       <Confetti active={showConfetti} onComplete={() => setShowConfetti(false)} />
 
       {/* Game Container */}
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4">
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-4 relative z-10">
         {/* Game Status */}
         {gameStatus !== 'playing' && (
-          <div className="mb-6 text-center">
-            <h2 className="text-3xl font-bold mb-2">
+          <div className="mb-6 text-center holographic p-6 rounded-lg neon-glow">
+            <h2 className="text-3xl font-bold mb-2 gradient-text">
               {gameStatus === 'won' ? '🎉 Congratulations!' : '😅 Game Over'}
             </h2>
-            <p className="text-xl text-gray-300">
-              {gameStatus === 'won' 
+            <p className="text-xl text-muted-foreground">
+              {gameStatus === 'won'
                 ? `You guessed it in ${currentRow + 1} ${currentRow === 0 ? 'try' : 'tries'}!`
                 : `The word was: ${TARGET_WORD}`
               }
