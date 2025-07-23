@@ -21,7 +21,7 @@ export default function Stats() {
       <CardContent className="p-6 text-center relative">
         <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500" style={{ background: gradient }}></div>
         <div className="relative z-10">
-          <Icon className="w-8 h-8 mx-auto mb-3 text-purple-400 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
+          <Icon className="w-8 h-8 mx-auto mb-3 text-sky-400 animate-float" style={{ animationDelay: `${delay * 0.2}s` }} />
           <div className="text-3xl font-black gradient-text mb-1">{value}</div>
           <div className="text-sm text-gray-400 font-medium">{label}</div>
         </div>
@@ -45,7 +45,7 @@ export default function Stats() {
   return (
     <div className="min-h-screen bg-black text-white relative">
       {/* Background effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
+      <div className="fixed inset-0 bg-gradient-to-br from-sky-900/20 via-black to-blue-900/20"></div>
       
       <Navigation />
 
@@ -58,11 +58,11 @@ export default function Stats() {
 
         {/* Main Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          <StatCard 
-            icon={Gamepad2} 
-            value={stats.gamesPlayed} 
-            label="Games Played" 
-            gradient="linear-gradient(135deg, #a855f7, #3b82f6)"
+          <StatCard
+            icon={Gamepad2}
+            value={stats.gamesPlayed}
+            label="Games Played"
+            gradient="linear-gradient(135deg, #38bdf8, #3b82f6)"
             delay={0}
           />
           <StatCard 
@@ -79,11 +79,11 @@ export default function Stats() {
             gradient="linear-gradient(135deg, #f59e0b, #d97706)"
             delay={2}
           />
-          <StatCard 
-            icon={Award} 
-            value={stats.maxStreak} 
-            label="Best Streak" 
-            gradient="linear-gradient(135deg, #ec4899, #be185d)"
+          <StatCard
+            icon={Award}
+            value={stats.maxStreak}
+            label="Best Streak"
+            gradient="linear-gradient(135deg, #22d3ee, #0891b2)"
             delay={3}
           />
         </div>
@@ -108,7 +108,7 @@ export default function Stats() {
           <Card className="glass-card">
             <CardContent className="p-8">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-blue-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center">
                   <Crown className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -140,7 +140,7 @@ export default function Stats() {
                   </div>
                   <div className="flex-1 bg-gray-800/50 rounded-full h-8 relative overflow-hidden">
                     <div 
-                      className="bg-gradient-to-r from-purple-500 to-blue-500 h-full rounded-full flex items-center justify-end pr-3 transition-all duration-1000 ease-out"
+                      className="bg-gradient-to-r from-sky-500 to-blue-500 h-full rounded-full flex items-center justify-end pr-3 transition-all duration-1000 ease-out"
                       style={{ 
                         width: `${count === 0 ? 0 : Math.max(10, (count / Math.max(...stats.guessDistribution)) * 100)}%`,
                         animationDelay: `${index * 0.1}s`
