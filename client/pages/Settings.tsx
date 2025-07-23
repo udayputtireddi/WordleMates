@@ -28,7 +28,7 @@ export default function Settings() {
     <Card className={`glass-card hover:scale-105 transition-all duration-500 animate-stagger-${delay + 1}`}>
       <CardHeader>
         <CardTitle className="text-white text-xl flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-blue-600 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center">
             <Icon className="w-5 h-5 text-white" />
           </div>
           {title}
@@ -55,7 +55,7 @@ export default function Settings() {
   return (
     <div className="min-h-screen bg-black text-white relative">
       {/* Background effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
+      <div className="fixed inset-0 bg-gradient-to-br from-sky-900/20 via-black to-blue-900/20"></div>
       
       <Navigation />
 
@@ -168,7 +168,7 @@ export default function Settings() {
           <div className="space-y-4">
             <div className="p-4 glass rounded-xl border border-white/10">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl relative">
                   P
                   <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                     <Crown className="w-3 h-3 text-white" />
