@@ -22,17 +22,19 @@ interface Tile {
 const GameTile = ({ tile, isActive }: { tile: Tile; isActive: boolean }) => {
   const getStatusColor = () => {
     switch (tile.status) {
-      case 'correct': return 'bg-wordle-green border-wordle-green text-white';
-      case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white';
+      case 'correct': return 'bg-wordle-green border-wordle-green text-white neon-glow animate-pulse-glow';
+      case 'present': return 'bg-wordle-yellow border-wordle-yellow text-white neon-glow animate-pulse-glow';
       case 'absent': return 'bg-wordle-gray border-wordle-gray text-white';
       default: return tile.letter
-        ? 'bg-wordle-tile-empty border-wordle-tile-border text-foreground border-2'
-        : 'bg-wordle-tile-empty border-wordle-tile-border text-foreground';
+        ? 'bg-wordle-tile-empty border-wordle-tile-border text-foreground border-2 hover:neon-glow'
+        : 'bg-wordle-tile-empty border-wordle-tile-border text-foreground hover:cyber-glow';
     }
   };
 
+  const activeStyle = isActive ? 'scale-110 animate-pulse-glow' : '';
+
   return (
-    <div className={`w-14 h-14 border-2 flex items-center justify-center font-bold text-2xl transition-all duration-300 ${getStatusColor()}`}>
+    <div className={`w-14 h-14 border-2 flex items-center justify-center font-bold text-2xl transition-all duration-300 hover:scale-105 ${getStatusColor()} ${activeStyle}`}>
       {tile.letter}
     </div>
   );
