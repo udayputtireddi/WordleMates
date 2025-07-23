@@ -45,30 +45,37 @@ export default function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation Header - Only show when authenticated */}
       {isAuthenticated && (
-        <header className="flex items-center justify-between p-4 border-b border-gray-700">
+        <header className="flex items-center justify-between p-4 border-b border-border">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
+            <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent">
               <Menu className="w-6 h-6" />
             </Button>
-            <h1 className="text-xl font-bold gradient-text">🧩 WordleMates</h1>
+            <div className="flex items-center gap-2">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fda94b5400eec417db21cb7a4e8a60aa1%2Fe6699201d16d4c7f8c018fadb85ed265?format=webp&width=800"
+                alt="WordleMates"
+                className="w-8 h-8"
+              />
+              <h1 className="text-xl font-bold text-foreground">WordleMates</h1>
+            </div>
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <Link to="/game" className="text-gray-300 hover:text-white transition-colors">
+            <Link to="/game" className="text-muted-foreground hover:text-foreground transition-colors">
               Play
             </Link>
-            <Link to="/stats" className="text-gray-300 hover:text-white transition-colors">
+            <Link to="/stats" className="text-muted-foreground hover:text-foreground transition-colors">
               Stats
             </Link>
-            <Link to="/settings" className="text-gray-300 hover:text-white transition-colors">
+            <Link to="/settings" className="text-muted-foreground hover:text-foreground transition-colors">
               Settings
             </Link>
-            <Link to="/help" className="text-gray-300 hover:text-white transition-colors">
+            <Link to="/help" className="text-muted-foreground hover:text-foreground transition-colors">
               Help
             </Link>
           </nav>
 
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
+          <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent">
             <User className="w-6 h-6" />
           </Button>
         </header>
