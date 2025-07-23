@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Menu, User, Settings as SettingsIcon, Volume2, Zap, RotateCcw, LogOut } from "lucide-react";
+import { Settings as SettingsIcon, Volume2, Zap, RotateCcw, LogOut } from "lucide-react";
+import Navigation from "@/components/Navigation";
 
 export default function Settings() {
   const [hardMode, setHardMode] = useState(false);
@@ -26,25 +27,7 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 border-b border-gray-700">
-        <Link to="/">
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <ArrowLeft className="w-6 h-6" />
-          </Button>
-        </Link>
-        
-        <h1 className="text-2xl font-bold gradient-text">Settings</h1>
-        
-        <div className="flex gap-2">
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <Menu className="w-6 h-6" />
-          </Button>
-          <Button variant="ghost" size="icon" className="text-white hover:bg-gray-700">
-            <User className="w-6 h-6" />
-          </Button>
-        </div>
-      </header>
+      <Navigation />
 
       <div className="p-6 max-w-2xl mx-auto space-y-6">
         {/* Game Settings */}
