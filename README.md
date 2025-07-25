@@ -31,7 +31,7 @@
 ---
 
 ## 🔹 Tech Stack
-- **React Native** + **Expo** – cross-platform UI & development  
+- **React Native** – cross-platform UI & development  
 - **Firebase**  
   - Authentication  
   - Realtime Database  
