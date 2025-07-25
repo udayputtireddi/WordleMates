@@ -11,7 +11,6 @@
 4. [Installation & Setup](#installation--setup)  
 5. [Usage](#usage)  
 6. [Game Logic](#game-logic)  
-7. [Known Issues](#known-issues)  
 8. [Future Enhancements](#future-enhancements)  
 9. [Author & License](#author--license)
 
