@@ -23,21 +23,30 @@ export default function Settings() {
   const { settings, updateSetting } = useSettings();
   const { user, resetStats, logout } = useAuth();
 
-  const handleResetStats = () => {
+  const handleResetStats = async () => {
     if (
       confirm(
         "Are you sure you want to reset all your statistics? This action cannot be undone.",
       )
     ) {
-      // Reset stats logic would go here
-      alert("Statistics reset successfully!");
+      try {
+        await resetStats();
+        alert("Statistics reset successfully! All your game data has been cleared.");
+      } catch (error) {
+        alert("Error resetting statistics. Please try again.");
+        console.error("Reset stats error:", error);
+      }
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     if (confirm("Are you sure you want to log out?")) {
-      // Logout logic would go here
-      window.location.href = "/";
+      try {
+        await logout();
+      } catch (error) {
+        alert("Error logging out. Please try again.");
+        console.error("Logout error:", error);
+      }
     }
   };
 
