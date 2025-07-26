@@ -21,6 +21,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Settings() {
   const { settings, updateSetting } = useSettings();
+  const { user, resetStats, logout } = useAuth();
 
   const handleResetStats = () => {
     if (
