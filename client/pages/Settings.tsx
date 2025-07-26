@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useSettings } from "@/contexts/SettingsContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Settings() {
   const { settings, updateSetting } = useSettings();
