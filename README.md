@@ -15,7 +15,17 @@
 9. [Author & License](#author--license)
 
 ---
-
+## 🔹 Features
+- 🧩 ⭐ Classic Wordle mechanics (5-letter words, 6 tries)  
+- 👥 Play in:  
+  - **Solo mode** – daily word challenge  
+  - **Multiplayer mode** – live challenge via Firebase  
+- 🔐 Firebase Authentication (Email and Google)  
+- 📶 Realtime syncing using Firebase Realtime Database  
+- 📊 User stats & performance tracking  
+- 💾 Offline support & smart sync recovery  
+- 🎨 Futuristic dark theme with smooth animations  
+- 📱 Cross‑platform support: iOS, Android, Web (via Expo)
 
 ---
 
