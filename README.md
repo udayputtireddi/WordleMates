@@ -3,6 +3,15 @@
 **WordleMates** is a multiplayer Wordle-inspired game built with **React Native**, **Expo**, and **Firebase**. It allows users to play solo or challenge friends with real-time word-guessing matches.
 
 ---
+## 🔹 Table of Contents
+1. [Features](#features)  
+2. [Tech Stack](#tech-stack)  
+3. [Project Structure](#project-structure)  
+4. [Installation & Setup](#installation--setup)  
+5. [Usage](#usage)  
+6. [Game Logic](#game-logic)  
+8. [Future Enhancements](#future-enhancements)  
+9. [Author & License](#author--license)
 
 ---
 ## 🔹 Features
