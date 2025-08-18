@@ -28,17 +28,7 @@
 
 ---
 
-## 🔹 Tech Stack
-- **React Native** – cross-platform UI & development  
-- **Firebase**  
-  - Authentication  
-  - Realtime Database  
-  - (Optional) Hosting for PWA/web version  
-- **React Navigation** – screen routing  
-- **NativeWind (Tailwind)** – utility-style styling  
-- **Custom Hooks** – app/game logic abstraction  
-- **Assets** – icons, logos, and UI illustrations  
-- **Support Modules** – helpers for word‐validation, timers, key‑input, etc.
+
 
 ---
 
