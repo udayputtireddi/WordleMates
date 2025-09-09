@@ -14,7 +14,7 @@
 9. [Author & License](#author--license)
 
 ---
-## 🔹 Features
+##  Features
 - 🧩 ⭐ Classic Wordle mechanics (5-letter words, 6 tries)  
 - 👥 Play in:  
   - **Solo mode** – daily word challenge  
