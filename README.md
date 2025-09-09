@@ -27,7 +27,7 @@
 - 📱 Cross‑platform support: iOS, Android, Web (via Expo)
 
 ---
-## 🔹 Tech Stack
+##  Tech Stack
 - **React Native** – cross-platform UI & development  
 - **Firebase**  
   - Authentication  
